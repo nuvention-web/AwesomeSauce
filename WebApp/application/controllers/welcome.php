@@ -23,18 +23,30 @@ class Welcome extends CI_Controller {
 		$this->load->database();
 		$query = $this->db->query('SELECT email FROM potential_emails');
 
-		foreach($query->result() as $row)
-		{
-			echo $row->email;
-		}
 	}
 
 	public function signup()
 	{
+		$this->load->database();
 		$this->load->model('mymodel');
 
-		$this->mymodel->storeEmail($_POST['email']);
+		$this->mymodel->insertPotentialEmail($_POST['email'],$_POST['firstname',$_POST['lastname']);
 		
+		$data['inserted'] = 'true';
+		$this->load->view('welcome_message',$data);
+	}
+
+	public function checkAllEmails()
+	{
+		$this->load->database();
+		$this->load->model('mymodel');
+		$result = $this->mymodel->getAllEmails();
+		
+		foreach($result as $row)
+		{
+			echo $row->email;
+			echo "<br>";
+		}
 	}
 }
 
