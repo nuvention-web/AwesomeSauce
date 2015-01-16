@@ -20,9 +20,6 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
-		$this->load->database();
-		$query = $this->db->query('SELECT email FROM potential_emails');
-
 	}
 
 	public function signup()
@@ -30,7 +27,7 @@ class Welcome extends CI_Controller {
 		$this->load->database();
 		$this->load->model('mymodel');
 
-		$this->mymodel->insertPotentialEmail($_POST['email'],$_POST['firstname',$_POST['lastname']);
+		$this->mymodel->insertPotentialEmail($_POST['email'],$_POST['firstname'],$_POST['lastname']);
 		
 		$data['inserted'] = 'true';
 		$this->load->view('welcome_message',$data);
