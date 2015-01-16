@@ -20,6 +20,21 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
+		$this->load->database();
+		$query = $this->db->query('SELECT email FROM potential_emails');
+
+		foreach($query->result() as $row)
+		{
+			echo $row->email;
+		}
+	}
+
+	public function signup()
+	{
+		$this->load->model('mymodel');
+
+		$this->mymodel->storeEmail($_POST['email']);
+		
 	}
 }
 

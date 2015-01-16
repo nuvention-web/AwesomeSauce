@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = 'allcabs-mysql.cqo0jtqt47mi.us-west-2.rds.amazonaws.com:3306';
+$db['default']['username'] = 'db_user';
+$db['default']['password'] = 'AllCabsPassword';
+$db['default']['database'] = 'allcabs';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
