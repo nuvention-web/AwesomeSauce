@@ -25,12 +25,12 @@ class Welcome extends CI_Controller {
 	public function signup()
 	{
 		$this->load->database();
+		$this->load->helper('url');
 		$this->load->model('mymodel');
 
-		$this->mymodel->insertPotentialEmail($_POST['email'],$_POST['firstname'],$_POST['lastname']);
-		
-		$data['inserted'] = 'true';
-		$this->load->view('welcome_message',$data);
+		$this->mymodel->insertPotentialEmail($_POST['email']);
+		redirect('/');
+		$this->load->view('welcome_message');
 	}
 
 	public function checkAllEmails()

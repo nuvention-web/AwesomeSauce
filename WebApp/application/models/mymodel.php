@@ -1,4 +1,5 @@
-ass Blogmodel extends CI_Model {
+<?php
+class mymodel extends CI_Model {
 
     var $title   = '';
     var $content = '';
@@ -16,11 +17,9 @@ ass Blogmodel extends CI_Model {
 	return $query->result();
     }
 
-    function insertPotentialEmail($email, $first=NULL,$last=NULL)
+    function insertPotentialEmail($email)
     {
 	$data['email'] = $email;
-	$data['firstname'] = $first;
-	$data['lastname'] = $last;
 
 	$this->db->insert('potential_emails',$data);
     }
