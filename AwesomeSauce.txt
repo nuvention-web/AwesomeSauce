@@ -1,0 +1,6 @@
+# AwesomeSauce
+http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/
+
+DB:
+http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/phpmyadmin/
+db_user/AllCabsPassword
