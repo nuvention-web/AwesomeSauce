@@ -44,6 +44,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+<!--
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -59,7 +60,7 @@
                         <td class="navbar-collapse collapse" style="padding-top:10pt" ><input class="btn btn-sm btn-primary" type="submit" value="login" href="login"></td></form>
                     </tr>
                 </table>
-                
+    -->            
             </div>
           </div>
         </nav>
