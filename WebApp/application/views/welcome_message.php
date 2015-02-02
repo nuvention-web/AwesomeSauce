@@ -44,6 +44,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+<!--
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -56,10 +57,10 @@
     			<form id="form1">
                         <td style="padding-right:10pt;padding-top:10pt"><input type="text" placeholder="Username" /></td>
                         <td style="padding-right:10pt;padding-top:10pt"><input type="password" placeholder="Password" /></td>
-                        <td class="navbar-collapse collapse" style="padding-top:10pt" ><input type="submit" href="login">Login</a></td></form>
+                        <td class="navbar-collapse collapse" style="padding-top:10pt" ><input class="btn btn-sm btn-primary" type="submit" value="login" href="login"></td></form>
                     </tr>
                 </table>
-                
+    -->            
             </div>
           </div>
         </nav>
