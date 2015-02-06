@@ -13,6 +13,9 @@
 		E3B1FA8C1A7F34B9005321BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B1FA8B1A7F34B9005321BB /* Images.xcassets */; };
 		E3B1FA8F1A7F34B9005321BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B1FA8D1A7F34B9005321BB /* LaunchScreen.xib */; };
 		E3B1FA9B1A7F34B9005321BB /* AllCabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FA9A1A7F34B9005321BB /* AllCabsTests.swift */; };
+		E3B1FAA51A840D64005321BB /* CabCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA41A840D64005321BB /* CabCompany.swift */; };
+		E3B1FAA71A84131C005321BB /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA61A84131C005321BB /* CreditCard.swift */; };
+		E3B1FAA91A841726005321BB /* SideCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA81A841726005321BB /* SideCar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		E3B1FA941A7F34B9005321BB /* AllCabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllCabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B1FA991A7F34B9005321BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3B1FA9A1A7F34B9005321BB /* AllCabsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCabsTests.swift; sourceTree = "<group>"; };
+		E3B1FAA41A840D64005321BB /* CabCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabCompany.swift; sourceTree = "<group>"; };
+		E3B1FAA61A84131C005321BB /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		E3B1FAA81A841726005321BB /* SideCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideCar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,9 @@
 				E3B1FA8B1A7F34B9005321BB /* Images.xcassets */,
 				E3B1FA8D1A7F34B9005321BB /* LaunchScreen.xib */,
 				E3B1FA821A7F34B9005321BB /* Supporting Files */,
+				E3B1FAA41A840D64005321BB /* CabCompany.swift */,
+				E3B1FAA81A841726005321BB /* SideCar.swift */,
+				E3B1FAA61A84131C005321BB /* CreditCard.swift */,
 			);
 			path = AllCabs;
 			sourceTree = "<group>";
@@ -212,8 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B1FAA71A84131C005321BB /* CreditCard.swift in Sources */,
 				E3B1FA871A7F34B9005321BB /* ViewController.swift in Sources */,
+				E3B1FAA51A840D64005321BB /* CabCompany.swift in Sources */,
 				E3B1FA851A7F34B9005321BB /* AppDelegate.swift in Sources */,
+				E3B1FAA91A841726005321BB /* SideCar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
