@@ -13,7 +13,7 @@
 		517103821A87F6A10080EE43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517103811A87F6A10080EE43 /* Images.xcassets */; };
 		517103851A87F6A10080EE43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517103831A87F6A10080EE43 /* LaunchScreen.xib */; };
 		517103911A87F6A10080EE43 /* AllcabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517103901A87F6A10080EE43 /* AllcabsTests.swift */; };
-		51F696A21A885B0900A7FDB0 /* cab.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 51F696A11A885B0900A7FDB0 /* cab.jpeg */; };
+		519D49DD1A89318400E19B33 /* cab.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 519D49DC1A89318400E19B33 /* cab.jpeg */; };
 		51F696A51A89081100A7FDB0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F696A31A89081100A7FDB0 /* CustomTableViewCell.swift */; };
 		51F696A61A89081100A7FDB0 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F696A41A89081100A7FDB0 /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		5171038A1A87F6A10080EE43 /* AllcabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllcabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5171038F1A87F6A10080EE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517103901A87F6A10080EE43 /* AllcabsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllcabsTests.swift; sourceTree = "<group>"; };
-		51F696A11A885B0900A7FDB0 /* cab.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cab.jpeg; path = ../cab.jpeg; sourceTree = "<group>"; };
+		519D49DC1A89318400E19B33 /* cab.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cab.jpeg; path = ../../../../../Desktop/cab.jpeg; sourceTree = "<group>"; };
 		51F696A31A89081100A7FDB0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		51F696A41A89081100A7FDB0 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +65,6 @@
 		5171036C1A87F6A10080EE43 = {
 			isa = PBXGroup;
 			children = (
-				51F696A11A885B0900A7FDB0 /* cab.jpeg */,
 				517103771A87F6A10080EE43 /* Allcabs */,
 				5171038D1A87F6A10080EE43 /* AllcabsTests */,
 				517103761A87F6A10080EE43 /* Products */,
@@ -84,6 +83,7 @@
 		517103771A87F6A10080EE43 /* Allcabs */ = {
 			isa = PBXGroup;
 			children = (
+				519D49DC1A89318400E19B33 /* cab.jpeg */,
 				5171037A1A87F6A10080EE43 /* AppDelegate.swift */,
 				5171037C1A87F6A10080EE43 /* ViewController.swift */,
 				5171037E1A87F6A10080EE43 /* Main.storyboard */,
@@ -201,9 +201,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519D49DD1A89318400E19B33 /* cab.jpeg in Resources */,
 				517103801A87F6A10080EE43 /* Main.storyboard in Resources */,
 				517103851A87F6A10080EE43 /* LaunchScreen.xib in Resources */,
-				51F696A21A885B0900A7FDB0 /* cab.jpeg in Resources */,
 				51F696A61A89081100A7FDB0 /* CustomTableViewCell.xib in Resources */,
 				517103821A87F6A10080EE43 /* Images.xcassets in Resources */,
 			);

@@ -14,15 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPS-oM-LbS">
-                        <rect key="frame" x="89" y="41" width="275" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="27" id="iHC-Mk-joh"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Company" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgu-xQ-Y64">
                         <rect key="frame" x="89" y="11" width="75" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -30,7 +21,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time/Money" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKy-5q-Omc">
-                        <rect key="frame" x="201" y="13" width="100" height="21"/>
+                        <rect key="frame" x="201" y="15" width="111" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -38,6 +29,15 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyu-Kl-dCE">
                         <rect key="frame" x="8" y="4" width="80" height="80"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPS-oM-LbS">
+                        <rect key="frame" x="89" y="53" width="275" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="iHC-Mk-joh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="TPS-oM-LbS" secondAttribute="bottom" constant="7" id="OFM-hE-hhg"/>
@@ -55,7 +55,7 @@
                 <outlet property="labelCompanyName" destination="pgu-xQ-Y64" id="6Pt-1A-N1C"/>
                 <outlet property="labelTimenMoney" destination="cKy-5q-Omc" id="jXo-Fy-iYT"/>
             </connections>
-            <point key="canvasLocation" x="93" y="242"/>
+            <point key="canvasLocation" x="93" y="240"/>
         </tableViewCell>
     </objects>
 </document>

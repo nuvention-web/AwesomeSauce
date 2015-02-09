@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.delegate = self;
         tableView.dataSource = self;
+        //tableView.backgroundColor = UICol
         self.items = ["","one","two","three","four"]
         self.tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil) , forCellReuseIdentifier: "cell")
 //        self.tableView.registerClass(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
@@ -36,6 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 4;
     }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
@@ -43,13 +45,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 //        cell.textLabel?.text = self.items[indexPath.row] as NSString
         cell.labelCompanyInfo.text = companyInfo[indexPath.row] as NSString
+        cell.labelCompanyName.font = UIFont(name: "Helvetica", size: 25)
+        
         cell.labelCompanyName.text = companyName[indexPath.row] as NSString
+        cell.labelTimenMoney.font = UIFont(name: "Helvetica", size: 15)
         cell.labelTimenMoney.text = timenMoney[indexPath.row] as NSString
         cell.imageViewCabPicture.image = UIImage(named: "cab.jpeg")
 //        println()
 //        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cab.png"]];
 //        cell.back = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cabs.png"]];
 //            cell.imageView?.image=UIImage(named: "cabs.png")
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = UIColor.lightGrayColor()}
+        else
+        {cell.backgroundColor = UIColor.grayColor()}
         
         return cell
         
