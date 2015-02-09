@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class SideCar : CabCompany{
+class BaseCabCompany{
     var imageURL : String
     var companyDescription : String
     
@@ -19,20 +19,8 @@ class SideCar : CabCompany{
         self.companyDescription = companyDescription
     }
     
-    func getCabWaitTimeInMinutes(start: CLLocationCoordinate2D) -> Int {
-        return 15
-    }
-    
-    func getPriceInDollars(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Float {
-        return 20.4
-    }
-    
     func getCompanyDescription() -> String {
         return companyDescription;
-    }
-    
-    func orderCab(start: CLLocationCoordinate2D, creditCard: CreditCard?) -> Bool {
-        return true
     }
     
     func getThumbnail(inout imageCache : [String : UIImage]) -> UIImage {
@@ -51,7 +39,7 @@ class SideCar : CabCompany{
                     // Store the image in to our cache
                     imageCache[self.imageURL] = image
                     dispatch_async(dispatch_get_main_queue(), {
-                                })
+                    })
                 }
                 else {
                     println("Error: \(error.localizedDescription)")

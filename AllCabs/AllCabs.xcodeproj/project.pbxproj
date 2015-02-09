@@ -16,6 +16,10 @@
 		E3B1FAA51A840D64005321BB /* CabCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA41A840D64005321BB /* CabCompany.swift */; };
 		E3B1FAA71A84131C005321BB /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA61A84131C005321BB /* CreditCard.swift */; };
 		E3B1FAA91A841726005321BB /* SideCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAA81A841726005321BB /* SideCar.swift */; };
+		E3B1FAAB1A882D6A005321BB /* Lyft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAAA1A882D6A005321BB /* Lyft.swift */; };
+		E3B1FAAD1A882E45005321BB /* BaseCabCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAAC1A882E45005321BB /* BaseCabCompany.swift */; };
+		E3B1FAAF1A882FDA005321BB /* Norshore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAAE1A882FDA005321BB /* Norshore.swift */; };
+		E3B1FAB11A883004005321BB /* UberBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1FAB01A883004005321BB /* UberBlack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		E3B1FAA41A840D64005321BB /* CabCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabCompany.swift; sourceTree = "<group>"; };
 		E3B1FAA61A84131C005321BB /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		E3B1FAA81A841726005321BB /* SideCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideCar.swift; sourceTree = "<group>"; };
+		E3B1FAAA1A882D6A005321BB /* Lyft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lyft.swift; sourceTree = "<group>"; };
+		E3B1FAAC1A882E45005321BB /* BaseCabCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCabCompany.swift; sourceTree = "<group>"; };
+		E3B1FAAE1A882FDA005321BB /* Norshore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Norshore.swift; sourceTree = "<group>"; };
+		E3B1FAB01A883004005321BB /* UberBlack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberBlack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,10 @@
 				E3B1FA821A7F34B9005321BB /* Supporting Files */,
 				E3B1FAA41A840D64005321BB /* CabCompany.swift */,
 				E3B1FAA81A841726005321BB /* SideCar.swift */,
+				E3B1FAAA1A882D6A005321BB /* Lyft.swift */,
+				E3B1FAAE1A882FDA005321BB /* Norshore.swift */,
+				E3B1FAB01A883004005321BB /* UberBlack.swift */,
+				E3B1FAAC1A882E45005321BB /* BaseCabCompany.swift */,
 				E3B1FAA61A84131C005321BB /* CreditCard.swift */,
 			);
 			path = AllCabs;
@@ -222,9 +234,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B1FAA71A84131C005321BB /* CreditCard.swift in Sources */,
+				E3B1FAAF1A882FDA005321BB /* Norshore.swift in Sources */,
 				E3B1FA871A7F34B9005321BB /* ViewController.swift in Sources */,
+				E3B1FAB11A883004005321BB /* UberBlack.swift in Sources */,
+				E3B1FAAB1A882D6A005321BB /* Lyft.swift in Sources */,
 				E3B1FAA51A840D64005321BB /* CabCompany.swift in Sources */,
 				E3B1FA851A7F34B9005321BB /* AppDelegate.swift in Sources */,
+				E3B1FAAD1A882E45005321BB /* BaseCabCompany.swift in Sources */,
 				E3B1FAA91A841726005321BB /* SideCar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

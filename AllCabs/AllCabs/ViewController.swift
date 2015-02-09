@@ -10,12 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var cabCompanies : [CabCompany] = [CabCompany]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //TODO
         //GetListOfCabCompanies
+        let allCabsURL = ""
+        cabCompanies.append(SideCar(imageURL: "\(allCabsURL)/sidecar.png", companyDescription: "The only app that will let you choose how much you pay, before your ride arrives"))
+        cabCompanies.append(Lyft(imageURL: "\(allCabsURL)/lyft.png",
+            companyDescription: "A ride whenever you need one"))
+        cabCompanies.append(Norshore(imageURL: "\(allCabsURL)/norshore.png", companyDescription: "Clean professional service at reasonable, flat rates"))
+        cabCompanies.append(UberBlack(imageURL: "\(allCabsURL)/uberblack.png", companyDescription: "Your own private driver, on demand. Expect pickup in a high-end sedan within minutes."))
         //GetInfoFromActiveCabCompanies
         //UpdateView
         
