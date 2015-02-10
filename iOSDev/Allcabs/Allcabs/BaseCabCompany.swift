@@ -13,17 +13,23 @@ import UIKit
 class BaseCabCompany{
     var imageURL : String
     var companyDescription : String
+    var companyName : String
     
-    init(imageURL : String, companyDescription : String){
+    init(imageURL : String, companyDescription : String, companyName : String){
         self.imageURL = imageURL
         self.companyDescription = companyDescription
+        self.companyName = companyName
     }
     
     func getCompanyDescription() -> String {
         return companyDescription;
     }
     
-    func getThumbnail(inout imageCache : [String : UIImage]) -> UIImage {
+    func getCompanyName() -> String {
+        return companyName
+    }
+    
+    func getThumbnail(inout imageCache : [String : UIImage]) -> UIImage? {
         var image :UIImage? = imageCache[self.imageURL]
         
         if( image == nil ) {
@@ -32,26 +38,18 @@ class BaseCabCompany{
             
             // Download an NSData representation of the image at the URL
             let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if error == nil {
-                    image = UIImage(data: data)
-                    
-                    // Store the image in to our cache
-                    imageCache[self.imageURL] = image
-                    dispatch_async(dispatch_get_main_queue(), {
-                    })
-                }
-                else {
-                    println("Error: \(error.localizedDescription)")
-                }
-            })
+            let data = NSData(contentsOfURL: imgURL)
+            if(data == nil){
+                image = UIImage(named: "cab.jpeg")
+            } else {
+                image = UIImage(data: data!)
+                imageCache[imageURL] = image!
+            }
         } else {
             dispatch_async(dispatch_get_main_queue(), {
             })
         }
-        
-        return image!
-        
+        return image
     }
     
 }

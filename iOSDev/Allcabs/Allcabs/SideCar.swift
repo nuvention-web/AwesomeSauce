@@ -10,18 +10,14 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class UberBlack : BaseCabCompany, CabCompany{
-    
-    override init(imageURL : String, companyDescription : String){
-        super.init(imageURL: imageURL,companyDescription: companyDescription)
-    }
+class SideCar : BaseCabCompany, CabCompany{
     
     func getCabWaitTimeInMinutes(start: CLLocationCoordinate2D) -> Int {
-        return 7
+        return 9
     }
     
     func getPriceInDollars(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) -> Float {
-        return 67
+        return 21
     }
     
     func orderCab(start: CLLocationCoordinate2D, creditCard: CreditCard?) -> Bool {

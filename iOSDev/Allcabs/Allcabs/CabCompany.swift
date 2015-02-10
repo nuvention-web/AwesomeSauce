@@ -18,9 +18,9 @@ protocol CabCompany {
     func getPriceInDollars(start: CLLocationCoordinate2D,
             end : CLLocationCoordinate2D)->Float
     
-    func getThumbnail(inout imageCache : [String : UIImage]) -> UIImage
+    func getThumbnail(inout imageCache : [String : UIImage]) -> UIImage?
     func getCompanyDescription() -> String
     
     func orderCab(start: CLLocationCoordinate2D, creditCard : CreditCard?) -> Bool
-    
+    func getCompanyName() -> String
 }

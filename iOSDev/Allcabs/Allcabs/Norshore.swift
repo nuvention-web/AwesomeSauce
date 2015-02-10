@@ -12,10 +12,6 @@ import UIKit
 
 class Norshore : BaseCabCompany, CabCompany{
     
-    override init(imageURL : String, companyDescription : String){
-        super.init(imageURL: imageURL,companyDescription: companyDescription)
-    }
-    
     func getCabWaitTimeInMinutes(start: CLLocationCoordinate2D) -> Int {
         return 4
     }
