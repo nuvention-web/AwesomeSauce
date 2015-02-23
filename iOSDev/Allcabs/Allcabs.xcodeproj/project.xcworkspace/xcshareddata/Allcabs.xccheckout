@@ -14,7 +14,7 @@
 		<string>https://github.com/nuvention-web/AwesomeSauce.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS Dev/Allcabs/Allcabs.xcodeproj</string>
+	<string>iOSDev/Allcabs/Allcabs.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1F9EAD04A023EDA82533582292AFFA39B29935AE</key>

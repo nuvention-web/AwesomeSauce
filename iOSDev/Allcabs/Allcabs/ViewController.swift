@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var cabCompanies : [CabCompany] = [CabCompany]()
     /*var companyName : [NSString] = ["Sidecar","Lyft","Uber","Flash"]
     var companyInfo : [NSString] = ["Fast and Cheap","Safe","Leaders","Quick"]
-    var timenMoney : [NSString] = ["15min/20$","15min/20$","15min/20$","15min/20$"]*/
+    var timenMoney : [NSString] = ["15min / 20$","15min / 20$","15min / 20$","15min / 20$"]*/
     
     var currentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 90, longitude: 90)
     var imageCache : [String :  UIImage] = [String : UIImage]()
@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let sidecarURL = "http://a2.mzstatic.com/us/r30/Purple/v4/cb/b2/10/cbb21035-4402-236d-92ec-cc11a52b2c52/mzl.owsfivfs.png"
         let uberURL = "http://www.taximobility.com/blog/wp-content/uploads/2014/12/uber.png"
         let norshoreURL = "http://a4.mzstatic.com/us/r30/Purple4/v4/4a/5f/97/4a5f978f-c178-a568-c6af-1bb832de7b8b/icon175x175.png"
+        
         cabCompanies.append(SideCar(imageURL: "\(sidecarURL)", companyDescription: "The only app that will let you choose \nhow much you pay, before your ride arrives",companyName:"Sidecar"))
         cabCompanies.append(Lyft(imageURL: "\(lyftURL)",
             companyDescription: "A ride whenever you need one",companyName:"Lyft"))
@@ -40,6 +41,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //tableView.backgroundColor = UICol
         self.items = ["","one","two","three","four"]
         self.tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil) , forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = UIColor.grayColor()
+        
+        self.view.backgroundColor = UIColor.grayColor()
 //        self.tableView.registerClass(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -64,8 +68,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.labelCompanyName.text = cabCompanies[indexPath.row].getCompanyName() as NSString
         cell.labelTimenMoney.font = UIFont(name: "Helvetica", size: 12)
-        cell.labelTimenMoney.text = "\(cabCompanies[indexPath.row].getCabWaitTimeInMinutes(currentLocation))/$\(cabCompanies[indexPath.row].getPriceInDollars(currentLocation, end: currentLocation))" as NSString
+        cell.labelTimenMoney.text = "\(cabCompanies[indexPath.row].getCabWaitTimeInMinutes(currentLocation)) min/$\(cabCompanies[indexPath.row].getPriceInDollars(currentLocation, end: currentLocation))" as NSString
         cell.imageViewCabPicture.image = cabCompanies[indexPath.row].getThumbnail(&imageCache)
+        cell.imageViewCabPicture.layer.cornerRadius = 5.0
+        cell.imageViewCabPicture.layer.masksToBounds = true
+        
 
         //        println()
 //        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cab.png"]];
