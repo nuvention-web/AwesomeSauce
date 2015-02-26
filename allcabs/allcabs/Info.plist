@@ -53,5 +53,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationUsageDescription</key> 
+	<string>Your message1</string> 
+	<key>NSLocationAlwaysUsageDescription</key> 
+	<string>Your message2</string> 
+	<key>NSLocationWhenInUsageDescription</key> 
+	<string>Your message3</string>
 </dict>
 </plist>
