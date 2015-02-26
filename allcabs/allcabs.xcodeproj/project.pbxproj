@@ -28,6 +28,9 @@
 		E32E3E4F1A9BA1150096EA3D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32E3E4E1A9BA1150096EA3D /* OpenGLES.framework */; };
 		E32E3E511A9BA1200096EA3D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32E3E501A9BA1200096EA3D /* QuartzCore.framework */; };
 		E32E3E531A9BA12B0096EA3D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32E3E521A9BA12B0096EA3D /* SystemConfiguration.framework */; };
+		E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E347B6461A9FD3D500C115AC /* SWRevealViewController.m */; };
+		E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */; };
+		E3A291DF1A9FE2EC00C547E5 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A291DE1A9FE2EC00C547E5 /* list.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,10 @@
 		E32E3E501A9BA1200096EA3D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E32E3E521A9BA12B0096EA3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E32E3E541A9BA35D0096EA3D /* allcabs-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "allcabs-Bridging-Header.h"; sourceTree = "<group>"; };
+		E347B6451A9FD3D400C115AC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		E347B6461A9FD3D500C115AC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E3A291DE1A9FE2EC00C547E5 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +143,7 @@
 		E32E3CF01A9B9E4D0096EA3D /* allcabs */ = {
 			isa = PBXGroup;
 			children = (
+				E347B6441A9FD36D00C115AC /* SWRevealViewController */,
 				E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */,
 				E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */,
 				E32E3CF71A9B9E4E0096EA3D /* SecondViewController.swift */,
@@ -143,6 +151,7 @@
 				E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */,
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
+				E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -150,6 +159,7 @@
 		E32E3CF11A9B9E4D0096EA3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3A291DE1A9FE2EC00C547E5 /* list.png */,
 				E32E3CF21A9B9E4E0096EA3D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -170,6 +180,15 @@
 				E32E3D0A1A9B9E4E0096EA3D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E347B6441A9FD36D00C115AC /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E347B6451A9FD3D400C115AC /* SWRevealViewController.h */,
+				E347B6461A9FD3D500C115AC /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32E3CFB1A9B9E4E0096EA3D /* Main.storyboard in Resources */,
+				E3A291DF1A9FE2EC00C547E5 /* list.png in Resources */,
 				E32E3D001A9B9E4E0096EA3D /* LaunchScreen.xib in Resources */,
 				E32E3CFD1A9B9E4E0096EA3D /* Images.xcassets in Resources */,
 				E32E3E3B1A9BA00A0096EA3D /* GoogleMaps.bundle in Resources */,
@@ -307,8 +327,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32E3CF81A9B9E4E0096EA3D /* SecondViewController.swift in Sources */,
+				E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */,
 				E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */,
 				E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */,
+				E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +543,7 @@
 				E32E3D111A9B9E4E0096EA3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E32E3D121A9B9E4E0096EA3D /* Build configuration list for PBXNativeTarget "allcabsTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +552,7 @@
 				E32E3D141A9B9E4E0096EA3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
