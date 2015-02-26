@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager : CLLocationManager!
@@ -18,7 +19,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var startedRoute : Bool = false
     var mapView : GMSMapView!
     let sydneyCoord : CLLocationCoordinate2D
-    
+    var menuButton : UIBarButtonItem!
     required init(coder aDecoder: NSCoder) {
         sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
         super.init(coder: aDecoder)
@@ -31,6 +32,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+            menuButton = self.navigationItem.leftBarButtonItem
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
         var camera = GMSCameraPosition.cameraWithTarget(sydneyCoord, zoom: 7)
         mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
