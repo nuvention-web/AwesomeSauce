@@ -32,7 +32,7 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
         
         FriendListTable.delegate = self;
         FriendListTable.dataSource = self;
-        self.FriendListTable.registerNib(UINib(nibName: "friendListCell", bundle: nil) , forCellReuseIdentifier: "cell")
+        //self.FriendListTable.registerNib(UINib(nibName: "friendListCell", bundle: nil) , forCellReuseIdentifier: "cell")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -54,10 +54,8 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     
     func tableView(FriendListTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell : friendListCell = FriendListTable.dequeueReusableCellWithIdentifier("Cell") as friendListCell
+        let cell : friendListCell = FriendListTable.dequeueReusableCellWithIdentifier("cell") as friendListCell
 //        FriendListTable.registerNib(nib, forCellReuseIdentifier: "cell")
-    
-        cell.FriendListName.text = "ABC"
         cell.LoadCell(profilepics[indexPath.row], CellName: name[indexPath.row])
         return cell
     }
