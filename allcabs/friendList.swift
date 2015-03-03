@@ -69,7 +69,6 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return name.count
-        return 1
+        return name.count
     }
 }
