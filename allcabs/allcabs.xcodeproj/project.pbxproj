@@ -13,6 +13,10 @@
 		51DDC6351AA1645A00EF0678 /* Patricia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6301AA1645A00EF0678 /* Patricia.jpg */; };
 		51DDC6361AA1645A00EF0678 /* Reshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6311AA1645A00EF0678 /* Reshu.jpg */; };
 		51DDC6371AA1645A00EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6321AA1645A00EF0678 /* Richard.jpg */; };
+		51DDC6451AA3A2D500EF0678 /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DDC6441AA3A2D500EF0678 /* FBViewController.swift */; };
+		51DDC7681AA3B4AA00EF0678 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64D1AA3B4A800EF0678 /* Bolts.framework */; };
+		51DDC7691AA3B4AA00EF0678 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */; };
+		51DDC76A1AA3B4AA00EF0678 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */; };
 		E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */; };
 		E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */; };
 		E32E3CFB1A9B9E4E0096EA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */; };
@@ -56,6 +60,10 @@
 		51DDC6301AA1645A00EF0678 /* Patricia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Patricia.jpg; sourceTree = "<group>"; };
 		51DDC6311AA1645A00EF0678 /* Reshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reshu.jpg; sourceTree = "<group>"; };
 		51DDC6321AA1645A00EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
+		51DDC6441AA3A2D500EF0678 /* FBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
+		51DDC64D1AA3B4A800EF0678 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allcabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,12 +108,15 @@
 				E32E3E4B1A9BA0FD0096EA3D /* libicucore.dylib in Frameworks */,
 				E32E3E481A9BA0EC0096EA3D /* ImageIO.framework in Frameworks */,
 				E32E3E491A9BA0EC0096EA3D /* libc++.dylib in Frameworks */,
+				51DDC76A1AA3B4AA00EF0678 /* FBAudienceNetwork.framework in Frameworks */,
 				E32E3E451A9BA0CB0096EA3D /* GLKit.framework in Frameworks */,
 				E32E3E431A9BA0BB0096EA3D /* CoreText.framework in Frameworks */,
 				E32E3E401A9BA0AC0096EA3D /* CoreData.framework in Frameworks */,
 				E32E3E411A9BA0AC0096EA3D /* CoreLocation.framework in Frameworks */,
+				51DDC7691AA3B4AA00EF0678 /* FacebookSDK.framework in Frameworks */,
 				E32E3E3D1A9BA09A0096EA3D /* AVFoundation.framework in Frameworks */,
 				E32E3E391A9B9FCE0096EA3D /* GoogleMaps.framework in Frameworks */,
+				51DDC7681AA3B4AA00EF0678 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +143,17 @@
 			path = allcabs/images;
 			sourceTree = SOURCE_ROOT;
 		};
+		51DDC64C1AA3B4A800EF0678 /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				51DDC64D1AA3B4A800EF0678 /* Bolts.framework */,
+				51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */,
+				51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */,
+			);
+			name = FacebookSDK;
+			path = ../../../FacebookSDK;
+			sourceTree = "<group>";
+		};
 		E32E3CE51A9B9E4D0096EA3D = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +161,7 @@
 				E32E3E501A9BA1200096EA3D /* QuartzCore.framework */,
 				E32E3E4E1A9BA1150096EA3D /* OpenGLES.framework */,
 				E32E3E4C1A9BA10A0096EA3D /* libz.dylib */,
+				51DDC64C1AA3B4A800EF0678 /* FacebookSDK */,
 				E32E3E4A1A9BA0FD0096EA3D /* libicucore.dylib */,
 				E32E3E461A9BA0EC0096EA3D /* ImageIO.framework */,
 				E32E3E471A9BA0EC0096EA3D /* libc++.dylib */,
@@ -172,13 +195,14 @@
 				E347B6441A9FD36D00C115AC /* SWRevealViewController */,
 				E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */,
 				E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */,
+				51DDC6441AA3A2D500EF0678 /* FBViewController.swift */,
 				51DDC62B1AA15F5B00EF0678 /* friendList.swift */,
+				E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */,
 				E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */,
 				E3D378291AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift */,
 				E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */,
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
-				E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -358,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51DDC6451AA3A2D500EF0678 /* FBViewController.swift in Sources */,
 				E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */,
 				E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */,
 				E3D3782A1AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift in Sources */,
@@ -496,6 +521,7 @@
 					"$(PROJECT_DIR)/GoogleMaps-iOS-1.9.2",
 					"$(PROJECT_DIR)/GoogleMaps-iOS-1.9.2/GoogleMapsSDKDemos",
 					"$(PROJECT_DIR)",
+					/Users/fcei/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,6 +541,7 @@
 					"$(PROJECT_DIR)/GoogleMaps-iOS-1.9.2",
 					"$(PROJECT_DIR)/GoogleMaps-iOS-1.9.2/GoogleMapsSDKDemos",
 					"$(PROJECT_DIR)",
+					/Users/fcei/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -166,18 +166,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RCN-Up-sLo" id="8Kx-Ke-TFn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpX-Db-G77">
+                                                    <rect key="frame" x="8" y="2" width="90" height="90"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt5-hK-0nH">
-                                                    <rect key="frame" x="189" y="8" width="263" height="73"/>
+                                                    <rect key="frame" x="106" y="10" width="196" height="73"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-TD-jcX">
-                                                    <rect key="frame" x="543" y="35" width="51" height="31"/>
+                                                    <rect key="frame" x="310" y="31" width="51" height="31"/>
                                                 </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpX-Db-G77">
-                                                    <rect key="frame" x="8" y="2" width="148" height="89"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -201,7 +201,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1c-wA-WEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1667" y="-537"/>
+            <point key="canvasLocation" x="1667" y="-538"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DkU-eZ-kYq">
+            <objects>
+                <viewController id="b9x-tg-EQC" customClass="FBViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gWm-5T-2Ac"/>
+                        <viewControllerLayoutGuide type="bottom" id="da9-fU-RyS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E8M-ab-VL4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U6r-0g-YXl" customClass="FBLoginView">
+                                <rect key="frame" x="0.0" y="254" width="368" height="92"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGT-IO-F7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1675" y="170"/>
         </scene>
     </scenes>
     <resources>

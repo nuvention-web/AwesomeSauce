@@ -23,6 +23,11 @@ class friendListCell :UITableViewCell
         FriendListName.text = CellName
         FriendListSwitch.setOn(false, animated: true)
     }
+    
+    func CellCosmeticChanges()
+    {
+        
+    }
 }
 
 
@@ -32,7 +37,6 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
         
         FriendListTable.delegate = self;
         FriendListTable.dataSource = self;
-        //self.FriendListTable.registerNib(UINib(nibName: "friendListCell", bundle: nil) , forCellReuseIdentifier: "cell")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -46,17 +50,21 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     //var name : [String] = ["Reshu","Matthew","Richard", "James","Patricia"]
     //var profilepics : [UIImage] = [UIImage(named: "Reshu.jpg")!,UIImage(named: "Matthew.jpg")!,UIImage(named: "Patricia.jpg")!,UIImage(named: "Richard.jpg")!,UIImage(named: "James.jpg")!]
     
-
-//    var nib = UINib(nibName: "friendListCell", bundle: nil)
-    
     
     @IBOutlet weak var FriendListTable: UITableView!
     
     func tableView(FriendListTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell : friendListCell = FriendListTable.dequeueReusableCellWithIdentifier("cell") as friendListCell
-//        FriendListTable.registerNib(nib, forCellReuseIdentifier: "cell")
-      //  cell.LoadCell(profilepics[indexPath.row], CellName: name[indexPath.row])
+        cell.LoadCell(profilepics[indexPath.row], CellName: name[indexPath.row])
+        if(indexPath.row % 2 == 0)
+        {
+            cell.backgroundColor = UIColor.lightGrayColor()
+        }
+        else
+        {
+            cell.backgroundColor = UIColor.grayColor()
+        }
         return cell
     }
     
