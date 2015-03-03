@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		51DDC62C1AA15F5B00EF0678 /* friendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DDC62B1AA15F5B00EF0678 /* friendList.swift */; };
-		51DDC6331AA1645A00EF0678 /* James.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC62E1AA1645A00EF0678 /* James.jpg */; };
-		51DDC6341AA1645A00EF0678 /* Matthew.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC62F1AA1645A00EF0678 /* Matthew.jpg */; };
-		51DDC6351AA1645A00EF0678 /* Patricia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6301AA1645A00EF0678 /* Patricia.jpg */; };
-		51DDC6361AA1645A00EF0678 /* Reshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6311AA1645A00EF0678 /* Reshu.jpg */; };
-		51DDC6371AA1645A00EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6321AA1645A00EF0678 /* Richard.jpg */; };
 		51DDC6451AA3A2D500EF0678 /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DDC6441AA3A2D500EF0678 /* FBViewController.swift */; };
-		51DDC7681AA3B4AA00EF0678 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64D1AA3B4A800EF0678 /* Bolts.framework */; };
-		51DDC7691AA3B4AA00EF0678 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */; };
-		51DDC76A1AA3B4AA00EF0678 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */; };
+		51DDC82D1AA5895100EF0678 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC82A1AA5895000EF0678 /* Bolts.framework */; };
+		51DDC82E1AA5895100EF0678 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC82B1AA5895100EF0678 /* FacebookSDK.framework */; };
+		51DDC82F1AA5895100EF0678 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DDC82C1AA5895100EF0678 /* FBAudienceNetwork.framework */; };
+		51DDC8361AA5899300EF0678 /* James.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8311AA5899300EF0678 /* James.jpg */; };
+		51DDC8371AA5899300EF0678 /* Matthew.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8321AA5899300EF0678 /* Matthew.jpg */; };
+		51DDC8381AA5899300EF0678 /* Patricia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8331AA5899300EF0678 /* Patricia.jpg */; };
+		51DDC8391AA5899300EF0678 /* Reshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8341AA5899300EF0678 /* Reshu.jpg */; };
+		51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8351AA5899300EF0678 /* Richard.jpg */; };
 		E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */; };
 		E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */; };
 		E32E3CFB1A9B9E4E0096EA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */; };
@@ -55,15 +55,15 @@
 
 /* Begin PBXFileReference section */
 		51DDC62B1AA15F5B00EF0678 /* friendList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = friendList.swift; path = ../friendList.swift; sourceTree = "<group>"; };
-		51DDC62E1AA1645A00EF0678 /* James.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = James.jpg; sourceTree = "<group>"; };
-		51DDC62F1AA1645A00EF0678 /* Matthew.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matthew.jpg; sourceTree = "<group>"; };
-		51DDC6301AA1645A00EF0678 /* Patricia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Patricia.jpg; sourceTree = "<group>"; };
-		51DDC6311AA1645A00EF0678 /* Reshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reshu.jpg; sourceTree = "<group>"; };
-		51DDC6321AA1645A00EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
 		51DDC6441AA3A2D500EF0678 /* FBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
-		51DDC64D1AA3B4A800EF0678 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		51DDC82A1AA5895000EF0678 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		51DDC82B1AA5895100EF0678 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		51DDC82C1AA5895100EF0678 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		51DDC8311AA5899300EF0678 /* James.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = James.jpg; sourceTree = "<group>"; };
+		51DDC8321AA5899300EF0678 /* Matthew.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matthew.jpg; sourceTree = "<group>"; };
+		51DDC8331AA5899300EF0678 /* Patricia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Patricia.jpg; sourceTree = "<group>"; };
+		51DDC8341AA5899300EF0678 /* Reshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reshu.jpg; sourceTree = "<group>"; };
+		51DDC8351AA5899300EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
 		E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allcabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,15 +108,15 @@
 				E32E3E4B1A9BA0FD0096EA3D /* libicucore.dylib in Frameworks */,
 				E32E3E481A9BA0EC0096EA3D /* ImageIO.framework in Frameworks */,
 				E32E3E491A9BA0EC0096EA3D /* libc++.dylib in Frameworks */,
-				51DDC76A1AA3B4AA00EF0678 /* FBAudienceNetwork.framework in Frameworks */,
+				51DDC82F1AA5895100EF0678 /* FBAudienceNetwork.framework in Frameworks */,
 				E32E3E451A9BA0CB0096EA3D /* GLKit.framework in Frameworks */,
 				E32E3E431A9BA0BB0096EA3D /* CoreText.framework in Frameworks */,
 				E32E3E401A9BA0AC0096EA3D /* CoreData.framework in Frameworks */,
 				E32E3E411A9BA0AC0096EA3D /* CoreLocation.framework in Frameworks */,
-				51DDC7691AA3B4AA00EF0678 /* FacebookSDK.framework in Frameworks */,
+				51DDC82E1AA5895100EF0678 /* FacebookSDK.framework in Frameworks */,
 				E32E3E3D1A9BA09A0096EA3D /* AVFoundation.framework in Frameworks */,
 				E32E3E391A9B9FCE0096EA3D /* GoogleMaps.framework in Frameworks */,
-				51DDC7681AA3B4AA00EF0678 /* Bolts.framework in Frameworks */,
+				51DDC82D1AA5895100EF0678 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,28 +130,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51DDC62D1AA1645A00EF0678 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				51DDC62E1AA1645A00EF0678 /* James.jpg */,
-				51DDC62F1AA1645A00EF0678 /* Matthew.jpg */,
-				51DDC6301AA1645A00EF0678 /* Patricia.jpg */,
-				51DDC6311AA1645A00EF0678 /* Reshu.jpg */,
-				51DDC6321AA1645A00EF0678 /* Richard.jpg */,
-			);
-			name = Images;
-			path = allcabs/images;
-			sourceTree = SOURCE_ROOT;
-		};
 		51DDC64C1AA3B4A800EF0678 /* FacebookSDK */ = {
 			isa = PBXGroup;
 			children = (
-				51DDC64D1AA3B4A800EF0678 /* Bolts.framework */,
-				51DDC64E1AA3B4A800EF0678 /* FacebookSDK.framework */,
-				51DDC64F1AA3B4A800EF0678 /* FBAudienceNetwork.framework */,
+				51DDC82A1AA5895000EF0678 /* Bolts.framework */,
+				51DDC82B1AA5895100EF0678 /* FacebookSDK.framework */,
+				51DDC82C1AA5895100EF0678 /* FBAudienceNetwork.framework */,
 			);
 			name = FacebookSDK;
 			path = ../../../FacebookSDK;
+			sourceTree = "<group>";
+		};
+		51DDC8301AA5899300EF0678 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				51DDC8311AA5899300EF0678 /* James.jpg */,
+				51DDC8321AA5899300EF0678 /* Matthew.jpg */,
+				51DDC8331AA5899300EF0678 /* Patricia.jpg */,
+				51DDC8341AA5899300EF0678 /* Reshu.jpg */,
+				51DDC8351AA5899300EF0678 /* Richard.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		E32E3CE51A9B9E4D0096EA3D = {
@@ -191,7 +190,7 @@
 		E32E3CF01A9B9E4D0096EA3D /* allcabs */ = {
 			isa = PBXGroup;
 			children = (
-				51DDC62D1AA1645A00EF0678 /* Images */,
+				51DDC8301AA5899300EF0678 /* Images */,
 				E347B6441A9FD36D00C115AC /* SWRevealViewController */,
 				E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */,
 				E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */,
@@ -355,16 +354,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51DDC6351AA1645A00EF0678 /* Patricia.jpg in Resources */,
+				51DDC8381AA5899300EF0678 /* Patricia.jpg in Resources */,
 				E32E3CFB1A9B9E4E0096EA3D /* Main.storyboard in Resources */,
 				E3A291DF1A9FE2EC00C547E5 /* list.png in Resources */,
 				E32E3D001A9B9E4E0096EA3D /* LaunchScreen.xib in Resources */,
 				E32E3CFD1A9B9E4E0096EA3D /* Images.xcassets in Resources */,
-				51DDC6371AA1645A00EF0678 /* Richard.jpg in Resources */,
-				51DDC6341AA1645A00EF0678 /* Matthew.jpg in Resources */,
-				51DDC6331AA1645A00EF0678 /* James.jpg in Resources */,
+				51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */,
+				51DDC8371AA5899300EF0678 /* Matthew.jpg in Resources */,
+				51DDC8361AA5899300EF0678 /* James.jpg in Resources */,
 				E32E3E3B1A9BA00A0096EA3D /* GoogleMaps.bundle in Resources */,
-				51DDC6361AA1645A00EF0678 /* Reshu.jpg in Resources */,
+				51DDC8391AA5899300EF0678 /* Reshu.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
