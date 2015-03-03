@@ -8,10 +8,28 @@
 
 import Foundation
 import UIKit
-class MenuViewController : UINavigationController{
-    
+class MenuViewController :UIViewController{
+    var searchBar : UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        var rectang = CGRectMake(0, 0, self.navigationController!.navigationBar.frame.width, self.navigationController!.navigationBar.frame.height);
+        searchBar = UISearchBar(frame: rectang)
+        searchBar.placeholder = "Destination"
+        searchBar.keyboardType = UIKeyboardType.Default
+                
         
+        self.navigationItem.titleView = searchBar
+                
+        
+        var menuButtonItem = self.navigationItem.leftBarButtonItem!
+        
+        if self.revealViewController() != nil {
+            menuButtonItem.target = self.revealViewController()
+            menuButtonItem.action = "revealToggle:"
+
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        } else {
+            NSLog("No revealViewController")
+        }
     }
 }

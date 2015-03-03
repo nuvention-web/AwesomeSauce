@@ -15,7 +15,6 @@
 		51DDC6371AA1645A00EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC6321AA1645A00EF0678 /* Richard.jpg */; };
 		E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */; };
 		E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */; };
-		E32E3CF81A9B9E4E0096EA3D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF71A9B9E4E0096EA3D /* SecondViewController.swift */; };
 		E32E3CFB1A9B9E4E0096EA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */; };
 		E32E3CFD1A9B9E4E0096EA3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */; };
 		E32E3D001A9B9E4E0096EA3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */; };
@@ -37,6 +36,7 @@
 		E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E347B6461A9FD3D500C115AC /* SWRevealViewController.m */; };
 		E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */; };
 		E3A291DF1A9FE2EC00C547E5 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A291DE1A9FE2EC00C547E5 /* list.png */; };
+		E3D3782A1AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D378291AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,6 @@
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E32E3CF71A9B9E4E0096EA3D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E32E3CFA1A9B9E4E0096EA3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E32E3CFF1A9B9E4E0096EA3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		E347B6461A9FD3D500C115AC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E3A291DE1A9FE2EC00C547E5 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		E3D378291AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocompleteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +129,8 @@
 				51DDC6321AA1645A00EF0678 /* Richard.jpg */,
 			);
 			name = Images;
-			path = ../../../../../Desktop/Images;
-			sourceTree = "<group>";
+			path = allcabs/images;
+			sourceTree = SOURCE_ROOT;
 		};
 		E32E3CE51A9B9E4D0096EA3D = {
 			isa = PBXGroup;
@@ -173,8 +173,8 @@
 				E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */,
 				E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */,
 				51DDC62B1AA15F5B00EF0678 /* friendList.swift */,
-				E32E3CF71A9B9E4E0096EA3D /* SecondViewController.swift */,
 				E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */,
+				E3D378291AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift */,
 				E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */,
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
@@ -358,9 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32E3CF81A9B9E4E0096EA3D /* SecondViewController.swift in Sources */,
 				E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */,
 				E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */,
+				E3D3782A1AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift in Sources */,
 				51DDC62C1AA15F5B00EF0678 /* friendList.swift in Sources */,
 				E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */,
 				E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */,
