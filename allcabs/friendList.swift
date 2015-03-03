@@ -47,8 +47,8 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     }
 
     
-    //var name : [String] = ["Reshu","Matthew","Richard", "James","Patricia"]
-    //var profilepics : [UIImage] = [UIImage(named: "Reshu.jpg")!,UIImage(named: "Matthew.jpg")!,UIImage(named: "Patricia.jpg")!,UIImage(named: "Richard.jpg")!,UIImage(named: "James.jpg")!]
+    var name : [String] = ["Reshu","Matthew","Richard", "James","Patricia"]
+    var profilepics : [UIImage] = [UIImage(named: "Reshu.jpg")!,UIImage(named: "Matthew.jpg")!,UIImage(named: "Patricia.jpg")!,UIImage(named: "Richard.jpg")!,UIImage(named: "James.jpg")!]
     
     
     @IBOutlet weak var FriendListTable: UITableView!
@@ -69,7 +69,6 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return name.count
-        return 1
+        return name.count
     }
 }

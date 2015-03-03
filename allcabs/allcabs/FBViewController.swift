@@ -9,17 +9,20 @@
 import Foundation
 import UIKit
 
-class fBLogin : UIViewController, FBLoginViewDelegate {
+class FBViewController : UIViewController, FBLoginViewDelegate {
     
-    @IBOutlet weak var fbl : FBLoginView!
+    
+    @IBOutlet var fbLogin: FBLoginView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //var fbl: FBLoginView = FBLoginView() //create login button on UIController
         //self.view.addSubview(fbl)
         // Do any additional setup after loading the view, typically from a nib.
-        fbl.delegate = self
-        fbl.readPermissions = ["public_profile", "email", "user_friends"]
+        println("1")
+        self.fbLogin.delegate = self
+        self.fbLogin.readPermissions = ["public_profile", "email", "user_friends"]
+        
 
     }
     
@@ -46,25 +49,7 @@ class fBLogin : UIViewController, FBLoginViewDelegate {
         println("Error: \(handleError.localizedDescription)")
     }
     
-    func GetFriendList()
-    {
-        // Get List Of Friends
-        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
-        friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-            var resultdict = result as NSDictionary
-            println("Result Dict: \(resultdict)")
-            var data : NSArray = resultdict.objectForKey("data") as NSArray
-            
-            for i in 0...data.count {
-                let valueDict : NSDictionary = data[i] as NSDictionary
-                let id = valueDict.objectForKey("id") as String
-                println("the id value is \(id)")
-            }
-            
-            var friends = resultdict.objectForKey("data") as NSArray
-            println("Found \(friends.count) friends")
-        }
-    }
+    
     
     
     override func didReceiveMemoryWarning() {
