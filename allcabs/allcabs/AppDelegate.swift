@@ -19,11 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyChePAVRnDw0dMcFKkiS-DCN5lMedWoL0s")
         FBLoginView.self
         FBProfilePictureView.self
+        println("Appdelegate 1")
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
     var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        println("appdelegate 2")
     return wasHandled
     }
 
