@@ -53,11 +53,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationUsageDescription</key> 
-	<string>Your message1</string> 
-	<key>NSLocationAlwaysUsageDescription</key> 
-	<string>Your message2</string> 
-	<key>NSLocationWhenInUsageDescription</key> 
+	<key>NSLocationUsageDescription</key>
+	<string>Your message1</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your message2</string>
+	<key>NSLocationWhenInUsageDescription</key>
 	<string>Your message3</string>
+	<key>FacebookAppID</key>
+	<string>955031367840252</string>
+	<key>FacebookDisplayName</key>
+	<string>allcabs</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb955031367840252</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
