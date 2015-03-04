@@ -19,7 +19,6 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
         //var fbl: FBLoginView = FBLoginView() //create login button on UIController
         //self.view.addSubview(fbl)
         // Do any additional setup after loading the view, typically from a nib.
-        println("1")
         self.fbLogin.delegate = self
         self.fbLogin.readPermissions = ["public_profile", "email", "user_friends"]
         
@@ -29,16 +28,38 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
     // Facebook Delegate Methods
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        println("User Logged In")
-        println("1 skdjfs lkdvj")
+
     }
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
-        println("User: \(user)")
-        println("User ID: \(user.objectID)")
-        println("User Name: \(user.name)")
-        var userEmail = user.objectForKey("email") as String
-        println("User Email: \(userEmail)")
+        var friendNames : [String] = []
+        var friendPics : [UIImage] = []
+        
+        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
+        friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
+            var resultdict = result as NSDictionary
+            println("Result Dict: \(resultdict)")
+            var data : NSArray = resultdict.objectForKey("data") as NSArray
+            
+            for i in 0...data.count {
+                let valueDict : NSDictionary = data[i] as NSDictionary
+                let userID = valueDict.objectForKey("id") as String
+                friendNames.append(valueDict.objectForKey("name") as String)
+                let id = valueDict.objectForKey("name") as String
+                var url = NSURL (string : "http://graph.facebook.com/\(userID)/picture?type=large")
+                let urlRequest = NSURLRequest(URL: url!)
+                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue())
+                { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+                    
+                    // Display the image
+                    friendPics.append(UIImage(data: data)!)
+                    
+                }
+            }
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
@@ -51,10 +72,7 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
     
     
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+
     
 }
