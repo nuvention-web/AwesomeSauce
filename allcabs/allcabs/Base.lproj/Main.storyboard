@@ -224,6 +224,7 @@
                     </view>
                     <connections>
                         <outlet property="fbLogin" destination="8PB-ki-rOd" id="r6M-Aj-khB"/>
+                        <segue destination="VEO-Ce-Byb" kind="show" identifier="toFriendList" id="afP-29-uOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuJ-5i-S8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
