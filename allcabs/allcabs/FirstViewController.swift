@@ -24,10 +24,12 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     let apiKey = "AIzaSyA7bZqH1O2yNky7qezL0d8KQYrMS1di9DY"
     var searchController : UISearchController!
     var googlePlacesAutocompleteViewController : GooglePlacesAutocompleteViewController!
-    let demoPosition = CLLocationCoordinate2D(latitude: 37.8044,longitude: -122.1608)
+    //let demoPosition = CLLocationCoordinate2D(latitude: 37.8044,longitude: -122.1608) //42.0518189,-87.6894447
+    let demoPosition = CLLocationCoordinate2D(latitude: 41.9000,longitude: -87.6894)
     let demo : Bool = true
     required override init(coder aDecoder: NSCoder) {
-        sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
+        //sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
+        sydneyCoord = CLLocationCoordinate2D(latitude: 41.9000,longitude: -87.6894)
         super.init(coder: aDecoder)
         initLocationManager()
 
@@ -255,7 +257,8 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         marker.map = mapView
         
         marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: currentCoord.latitude - 0.2, longitude: currentCoord.longitude)
+        //marker.position = CLLocationCoordinate2D(latitude: currentCoord.latitude - 0.2, longitude: currentCoord.longitude)
+        marker.position = CLLocationCoordinate2D(latitude: demoPosition.latitude, longitude: demoPosition.longitude + 0.05)
         marker.icon = GMSMarker.markerImageWithColor(UIColor(red: 0, green: 0.9, blue: 0, alpha: 1))
         marker.map = mapView
     }
