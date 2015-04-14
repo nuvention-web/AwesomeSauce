@@ -76,14 +76,14 @@
       <ol class="carousel-indicators"></ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="/AwesomeSauce/WebApp/Resources/image1.jpg" alt="First slide">
+          <img src="/AwesomeSauce/WebApp/Resources/chicago.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1> RideGuard </h1>
-              <p>A mobile application that helps get rid of that nervousness when travelling alone</p>
-              <form class="form-inline" method="POST" action="/index.php/signup_page">
+              <h1> RideGuard! </h1>
+              <p>The mobile application that keeps you safe while travelling alone</p>
+              <form class="form-inline" id="signup" method="POST" action="/index.php/signup_page">
 		<div class="form-group">
-		  <input class="form-control input-lg" id="textbox1" type="text" name="email" placeholder="Enter email">
+		  <input class="form-control input-lg" type="text" name="email" placeholder="Enter email">
 		</div>
                 <button type="submit" class="btn btn-primary btn-lg">Sign up today!</button>
 	      </form>      
@@ -100,7 +100,7 @@
 
       <!-- START THE FEATURETTES -->
       <div class="container marketing">
-	<h3 align="center">We are very excited that the features we include on this app will improve transportation safety</h3>
+	<h3 align="center">We believe the key features on the app will help teens, parents, and commuters alike</h3>
       <hr class="featurette-divider">
 
       <div class="row featurette">
@@ -109,7 +109,7 @@
           <p class="lead">Our app will show how much you deviate from the expected route and alert family and friends when the deviation is too great. Rest assured!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/fast.jpg" style="width:350px;height:250px" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/fast.jpg" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -117,7 +117,7 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/cheap.jpg"  style="width:350px;height:250px" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/cheap.jpg"  style="width:350px;height:350px" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">Real Time Tracking</h2>
@@ -126,13 +126,15 @@
       </div>
 
       <hr class="featurette-divider">
+
+
       <div class="row featurette">
 	<div class="col-md-7">
 	  <h2 class="featurette-heading">Panic Button</h2>
 	  <p class="lead">In case of emergency, our app has a panic button which will alert your contacts and local authorities</p>
 	</div>
 	<div class="col-md-5">
-	  <imb class="featurette-image img-responsive" src="#" style="width:350;height:250px" alt="Generic placeholder image">
+	  <img class="featurette-image img-responsive" src="#" style="width:350;height:350px" align="right" alt="Generic placeholder image">
 	</div>
       </div>
 
