@@ -11,9 +11,6 @@ class GooglePlacesAutocompleteViewController : UITableViewController, UITableVie
     var places = [String]()
     var searchController : UISearchController!
     
-    required override init(){
-        super.init()
-    }
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -42,7 +39,7 @@ class GooglePlacesAutocompleteViewController : UITableViewController, UITableVie
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("placesCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("placesCell", forIndexPath: indexPath) as! UITableViewCell
         
         let place = self.places[indexPath.row]
         
