@@ -76,14 +76,14 @@
       <ol class="carousel-indicators"></ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="/AwesomeSauce/WebApp/Resources/chicago.jpg" alt="First slide">
+          <img src="#" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1> RideGuard! </h1>
+              <h1> RideGuard </h1>
               <p>The mobile application that keeps you safe while travelling alone</p>
-              <form class="form-inline" id="signup" method="POST" action="/index.php/signup_page">
+              <form class="form-inline" id="signup" method="POST" action="index.php/signup_page">
 		<div class="form-group">
-		  <input class="form-control input-lg" type="text" name="email" placeholder="Enter email">
+		  <input class="form-control input-lg " type="text" name="email" placeholder="Enter email">
 		</div>
                 <button type="submit" class="btn btn-primary btn-lg">Sign up today!</button>
 	      </form>      
@@ -100,7 +100,8 @@
 
       <!-- START THE FEATURETTES -->
       <div class="container marketing">
-	<h3 align="center">We believe the key features on the app will help teens, parents, and commuters alike</h3>
+	<h2 id="feature-header" align="center">Check out the main features of our app!</h2>
+      
       <hr class="featurette-divider">
 
       <div class="row featurette">
@@ -109,7 +110,7 @@
           <p class="lead">Our app will show how much you deviate from the expected route and alert family and friends when the deviation is too great. Rest assured!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/fast.jpg" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src ="#" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -117,7 +118,7 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/cheap.jpg"  style="width:350px;height:350px" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="#" style="width:350px;height:350px" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">Real Time Tracking</h2>
@@ -142,12 +143,40 @@
 
 
       <!-- /END THE FEATURETTES -->
- <hr class="featurette-divider">
+      <hr class="featurette-divider">
+      
+      <h2 id="feature-header" align=center>The Team</h2>
+      <div class="row">
+	<div class="col-lg-2 col-lg-offset-1">
+	  <a href="https://www.linkedin.com/in/albrechtmatthew" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Matt</h3>
+        </div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/pub/patr%C3%ADcia-gomes/18/b16/b46" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Patricia</h3>
+	</div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/pub/reshu-goel/a4/405/615" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Reshu</h3>
+	</div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/in/richardliang" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Richard</h3>
+	</div>
+	<div class="col-lg-2">
+          <a href="https://www.linkedin.com/pub/shubham-kumar/92/718/71a" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+          <h3>Shubham</h3>
+        </div>
+      </div>
+
+
+      <hr class="featurette-divider">
+
 
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2014 RideGuard. <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
       </footer>
 
     </div><!-- /.container -->
