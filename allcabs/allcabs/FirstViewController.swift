@@ -18,7 +18,9 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     //var endingCoord : CLLocationCoordinate2D!
     var endingAddress : String!
     var startedRoute : Bool = false
+    var deviatedFromPath : Bool = false
     var mapView : GMSMapView!
+    var myMarker: GMSMarker!
     let sydneyCoord : CLLocationCoordinate2D
     var menuButton : UIBarButtonItem!
     let apiKey = "AIzaSyA7bZqH1O2yNky7qezL0d8KQYrMS1di9DY"
@@ -27,9 +29,13 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     //let demoPosition = CLLocationCoordinate2D(latitude: 37.8044,longitude: -122.1608) //42.0518189,-87.6894447
     let demoPosition = CLLocationCoordinate2D(latitude: 41.9000,longitude: -87.6894)
     let demo : Bool = true
-    required override init(coder aDecoder: NSCoder) {
+    var deviationIndex : Double
+    var path : GMSPath!
+    
+    required init(coder aDecoder: NSCoder) {
         //sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
         sydneyCoord = CLLocationCoordinate2D(latitude: 41.9000,longitude: -87.6894)
+        deviationIndex = 0.0
         super.init(coder: aDecoder)
         initLocationManager()
 
@@ -38,8 +44,6 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-
     }
 
     
@@ -47,7 +51,8 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
 
      override func viewDidLoad() {
         super.viewDidLoad()
-        loadSearchController();
+        loadSearchController()
+        setupNotificationSettings()
         
         var camera = GMSCameraPosition.cameraWithTarget(sydneyCoord, zoom: 7)
         mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
@@ -55,12 +60,110 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
         self.view = mapView
         
-        var path = GMSMutablePath()
 
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    func calculateDeviationIndex()->() {
+        var path = self.path
+        if path == nil{
+            return
+        }
+        let length = path.lengthOfKind(kGMSLengthGeodesic) * 0.000621371; // in miles
+        var minDistance : Double = 9999999;
+        var distance = 0.01
+        if path.count() > 1{
 
+            while (!GMSGeometryIsLocationOnPathTolerance(self.currentCoord, path, true, distance/0.000621371)){
+                distance *= 1.5
+            }
+            distance /= 1.5
+        }
+        deviationIndex = (length > 1) ? distance / pow(length,0.65) : distance / length
+        if (deviationIndex > 1 && !deviatedFromPath){
+            deviatedFromPath = true
+            sendDeviatedAlert()
+        }
+    }
+    
+    func sendDeviatedAlert(){
+        
+        //Send alert
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = nil //Fire immediately
+        localNotification.alertBody = "You have significantly deviated from your expected path!"
+        localNotification.alertAction = "View Map" //Action when swiping alert
+        localNotification.category = "devaitionAlertCategory"
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+
+    
+    func cancelCurrentRoute(){
+        deviationIndex = 0.0
+        path = nil
+        self.mapView.clear()
+        self.deviatedFromPath = false
+    }
+    
+    func setupNotificationSettings(){
+        let notificationSettings: UIUserNotificationSettings! = UIApplication.sharedApplication().currentUserNotificationSettings()
+        
+        if (notificationSettings.types != UIUserNotificationType.None){
+            //No need to setup everything twice
+            return
+        }
+        // Specify the notification types.
+        var notificationTypes: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        
+        // Specify the notification actions.
+        var justInformAction = UIMutableUserNotificationAction()
+        justInformAction.identifier = "justInform"
+        justInformAction.title = "OK, got it"
+        justInformAction.activationMode = UIUserNotificationActivationMode.Background
+        justInformAction.destructive = false
+        justInformAction.authenticationRequired = false
+        
+        var viewMapAction = UIMutableUserNotificationAction()
+        viewMapAction.identifier = "viewMap"
+        viewMapAction.title = "View Map"
+        viewMapAction.activationMode = UIUserNotificationActivationMode.Foreground
+        viewMapAction.destructive = false
+        viewMapAction.authenticationRequired = false
+    
+        let actionsArray = NSArray(objects: viewMapAction, justInformAction)
+        var deviationAlertCategory = UIMutableUserNotificationCategory()
+        deviationAlertCategory.identifier = "deviationAlertCategory"
+        deviationAlertCategory.setActions(actionsArray as [AnyObject], forContext: UIUserNotificationActionContext.Default)
+        
+        let categoriesForSettings = NSSet(objects: deviationAlertCategory)
+        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as Set<NSObject>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
+        
+    }
+    
+    func updateMyMarker()->(){
+        if path == nil{
+            return
+        }
+        
+        var red = CGFloat(min(deviationIndex, 1))
+        var green = CGFloat(max(1-deviationIndex,0))
+        if(myMarker == nil){
+            myMarker = GMSMarker()
+
+            //myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
+            myMarker.title = "Matthew"
+            myMarker.appearAnimation = kGMSMarkerAnimationNone
+
+        }
+        myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
+        myMarker.position = self.currentCoord
+        myMarker.map = self.mapView
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,7 +180,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     }
     
     func loadSearchController() {
-        googlePlacesAutocompleteViewController = storyboard?.instantiateViewControllerWithIdentifier("googlePlacesAutocompleteViewController") as GooglePlacesAutocompleteViewController
+        googlePlacesAutocompleteViewController = storyboard?.instantiateViewControllerWithIdentifier("googlePlacesAutocompleteViewController") as! GooglePlacesAutocompleteViewController
         self.searchController = UISearchController(searchResultsController: googlePlacesAutocompleteViewController)
         self.searchController.searchResultsUpdater = self;
         self.searchController.dimsBackgroundDuringPresentation = true
@@ -110,7 +213,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locationArray = locations as NSArray
-        var locationObj = locationArray.lastObject as CLLocation
+        var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
         
         if (currentCoord == nil && mapView?.myLocation?.coordinate != nil){
@@ -118,12 +221,13 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             var camera = GMSCameraPosition.cameraWithTarget(mapView.myLocation.coordinate, zoom: 9)
             mapView.camera = camera
             
+
             //startRoute()
             
         }
-        
-        
-
+        self.currentCoord = coord
+        calculateDeviationIndex()
+        updateMyMarker()
     }
     
     // authorization status
@@ -132,7 +236,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             var shouldIAllow = false
             
             switch status {
-            case CLAuthorizationStatus.Authorized:
+            case CLAuthorizationStatus.AuthorizedAlways:
                 shouldIAllow = true
             default:
                 shouldIAllow = false
@@ -183,13 +287,19 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         fetchDirectionsFrom(mapView.myLocation?.coordinate, to: endingAddress) {optionalRoute in
             if let encodedRoute = optionalRoute {
                 // 3
+                self.mapView.clear()
                 let path = GMSPath(fromEncodedPath: encodedRoute)
+                self.path = path
                 let line = GMSPolyline(path: path)
-                
+                self.calculateDeviationIndex();
                 // 4
                 line.strokeWidth = 4.0
                 line.tappable = true
                 line.map = self.mapView
+                if self.demo {
+                    self.fakeMarkerForDemo()
+                }
+                self.deviatedFromPath = false
             }
         }
     }
@@ -221,7 +331,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
                 if let response = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? [String: AnyObject] {
                     if let predictions = response["predictions"] as? Array<AnyObject> {
                         places = predictions.map { (prediction: AnyObject) -> String in
-                            return prediction["description"] as String
+                            return prediction["description"] as! String
                         }
                     }
                     //NSLog(response.description)
@@ -239,28 +349,16 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         NSLog("Search button clicked")
         endingAddress = searchBar.text
         startRoute()
-        if countElements(self.searchBar.text) > 36 {
+        if count(self.searchBar.text) > 36 {
             self.searchBar.text = self.searchBar.text.substringToIndex(advance(self.searchBar.text.startIndex,35))
         }
         self.searchBar.placeholder = self.searchBar.text
         self.searchController.active = false
-        if demo {
-            fakeMarkerForDemo()
-        }
     }
     
     func fakeMarkerForDemo(){
-        var marker = GMSMarker()
-        marker.position = demoPosition
-        marker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
-        marker.title = "Matthew"
-        marker.map = mapView
-        
-        marker = GMSMarker()
-        //marker.position = CLLocationCoordinate2D(latitude: currentCoord.latitude - 0.2, longitude: currentCoord.longitude)
-        marker.position = CLLocationCoordinate2D(latitude: demoPosition.latitude, longitude: demoPosition.longitude + 0.05)
-        marker.icon = GMSMarker.markerImageWithColor(UIColor(red: 0, green: 0.9, blue: 0, alpha: 1))
-        marker.map = mapView
+
+
     }
 
 }
