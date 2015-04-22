@@ -32,4 +32,13 @@ class MenuViewController :UIViewController{
             NSLog("No revealViewController")
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CancelRoute"{
+            if let firstViewController = segue.destinationViewController as? FirstViewController{
+                firstViewController.cancelCurrentRoute()
+            }
+        }
+    }
+    
 }
