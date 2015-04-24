@@ -33,6 +33,33 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
+	public function trackNewRoute()
+	{
+		$this->load->database();
+		$this->load->model('mymodel');
+
+		$id = $this->mymodel->trackNewRoute($_POST);
+		echo json_encode(array('id'=>$id));
+	}
+
+	public function updateRouteByID()
+	{
+		$this->load->database();
+		$this->load->model('mymodel');
+
+		$this->mymodel->updateRouteByID($_POST);
+		$this->output->set_header("HTTP/1.1 200 OK");
+	}
+
+	public function getRouteByID()
+	{
+		$this->load->database();
+		$this->load->model('mymodel');
+
+		$route = $this->mymodel->getRouteByID($_POST['id']);
+		echo json_encode($route);
+	}
+
 	public function checkAllEmails()
 	{
 		$this->load->database();
