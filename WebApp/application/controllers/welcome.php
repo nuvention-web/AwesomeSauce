@@ -56,7 +56,7 @@ class Welcome extends CI_Controller {
 		$this->load->database();
 		$this->load->model('mymodel');
 
-		$route = $this->mymodel->getRouteByID($_POST['id']);
+		$route = $this->mymodel->getRouteByID($_GET['id']);
 		echo json_encode($route);
 	}
 

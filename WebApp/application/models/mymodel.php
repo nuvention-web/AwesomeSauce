@@ -35,7 +35,7 @@ class mymodel extends CI_Model {
 	function updateRouteByID($data)
 	{
 		$id = $data['id'];
-		unset($data['id'];
+		unset($data['id']);
 		$this->db->update('location_tracker',$data, array('id' => $id));
 	}
 
