@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>RideGuard</title>
+    <title>Helm</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/AwesomeSauce/WebApp/Resources/bootstrap.min.css" rel="stylesheet">
@@ -76,10 +76,10 @@
       <ol class="carousel-indicators"></ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="#" alt="First slide">
+          <img src="/AwesomeSauce/WebApp/Resources/image2.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1> RideGuard </h1>
+              <h1> Helm </h1>
               <p>The mobile application that keeps you safe while travelling alone</p>
               <form class="form-inline" id="signup" method="POST" action="index.php/signup_page">
 		<div class="form-group">
@@ -176,7 +176,7 @@
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 RideGuard. <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+        <p>&copy; 2014 Helm. <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
       </footer>
 
     </div><!-- /.container -->
