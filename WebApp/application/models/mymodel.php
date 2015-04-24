@@ -26,7 +26,7 @@ class mymodel extends CI_Model {
 
     function trackNewRoute($data)
 	{
-		$data['id'] = md5(microtime());
+		$data['id'] = md5(microtime(true).getmypid());
 		$this->db->insert('location_tracker',$data);
 		
 		return $data['id'];
