@@ -21,9 +21,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.awesomesauce.helm</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb955031367840252</string>
+				<string>Helm</string>
 			</array>
 		</dict>
 	</array>

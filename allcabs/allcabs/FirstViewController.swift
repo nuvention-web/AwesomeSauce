@@ -9,8 +9,9 @@
 import UIKit
 import CoreLocation
 import MapKit
+import MessageUI
 
-class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchBarDelegate, MFMessageComposeViewControllerDelegate {
     var locationManager : CLLocationManager!
     var seenError : Bool = false
     var currentCoord : CLLocationCoordinate2D!
@@ -300,6 +301,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
                     self.fakeMarkerForDemo()
                 }
                 self.deviatedFromPath = false
+                //trackNewRoute(completion: sendMessage)
             }
         }
     }
@@ -360,7 +362,49 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
 
 
     }
-
+    
+    func sendMessage(sender: AnyObject, trackingID : String) {
+        var messageViewController = MFMessageComposeViewController()
+        var trackingID = "zasdflkjadsf"
+        messageViewController.body = "I would like to share my location with you! The following link will allow you to track me until I reach my destination. Helm://?action=track&id=\(trackingID)"
+        
+        messageViewController.recipients = []
+        messageViewController.messageComposeDelegate = self
+        
+        self.presentViewController(messageViewController, animated: true, completion: nil)
+        
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        switch (result.value) {
+            case MessageComposeResultCancelled.value:
+                println("Message was cancelled")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            case MessageComposeResultFailed.value:
+                println("Message failed")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            case MessageComposeResultSent.value:
+                println("Message was sent")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            default:
+                break;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
