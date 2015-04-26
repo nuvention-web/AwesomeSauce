@@ -19,16 +19,16 @@ class ShareViewController : UIViewController
     
 
     @IBAction func Post(sender: AnyObject) {
-        var nope = ShareModel().StartNewRoute()
+        //var nope = ShareModel().StartNewRoute()
         
     }
     @IBAction func CreateUniqueID(sender: AnyObject) {
         
-        var nope2 = ShareModel().GetRouteByID("abc")
+        //var nope2 = ShareModel().GetRouteByID("abc")
         
     }
     @IBAction func Update(sender: AnyObject) {
-        var nope3 = ShareModel().updateRouteByID()
+        //var nope3 = ShareModel().updateRouteByID()
     }
 }
 

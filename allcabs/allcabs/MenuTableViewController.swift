@@ -9,19 +9,33 @@
 import Foundation
 import UIKit
 @objc class MenuTableViewController : UITableViewController{
-    
+    var firstViewController : FirstViewController!
+    var swRevealViewController : SWRevealViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsMultipleSelection = false
         self.tableView.allowsSelection = true
     }
+    
+    func getOtherViewControllers(){
+        swRevealViewController = self.parentViewController?.parentViewController as? SWRevealViewController
+        firstViewController = swRevealViewController?.frontViewController?.childViewControllers[0] as? FirstViewController
+    }
     func cancelCurrentRoute(){
-        var swRevealViewController = self.parentViewController?.parentViewController as? SWRevealViewController
-        var firstViewController = swRevealViewController?.frontViewController?.childViewControllers[0] as? FirstViewController
+        if(swRevealViewController == nil || firstViewController == nil){
+            getOtherViewControllers();
+        }
         firstViewController?.cancelCurrentRoute()
         var button = firstViewController?.navigationItem.leftBarButtonItem
         UIApplication.sharedApplication().sendAction(button!.action, to: button?.target, from: firstViewController, forEvent: nil)
         
+    }
+    
+    func shareCurrentRoute(){
+        if(swRevealViewController == nil || firstViewController == nil){
+            getOtherViewControllers()
+        }
+        firstViewController.shareRoute()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -29,6 +43,8 @@ import UIKit
         if indexPath.row == 0{
             //Cancel
             cancelCurrentRoute()
+        } else if(indexPath.row == 1) {
+            shareCurrentRoute()
         }
     }
 }

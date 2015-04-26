@@ -19,6 +19,7 @@
 		BFC1D2651AEB024A002C34A4 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC1D2641AEB024A002C34A4 /* share.png */; };
 		BFC1D2671AEB038A002C34A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1D2661AEB038A002C34A4 /* ShareViewController.swift */; };
 		BFC1D2691AEB41D0002C34A4 /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1D2681AEB41D0002C34A4 /* ShareModel.swift */; };
+		BFC1D26D1AEC7013002C34A4 /* Trackee.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1D26C1AEC7013002C34A4 /* Trackee.swift */; };
 		BFD0E95D1AAEC29300D50AEE /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BFD0E95C1AAEC29300D50AEE /* default.gpx */; };
 		E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */; };
 		E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */; };
@@ -72,6 +73,7 @@
 		BFC1D2641AEB024A002C34A4 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		BFC1D2661AEB038A002C34A4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		BFC1D2681AEB41D0002C34A4 /* ShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
+		BFC1D26C1AEC7013002C34A4 /* Trackee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackee.swift; sourceTree = "<group>"; };
 		BFD0E95C1AAEC29300D50AEE /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = default.gpx; path = allcabs/default.gpx; sourceTree = "<group>"; };
 		E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allcabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				E32E3CFC1A9B9E4E0096EA3D /* Images.xcassets */,
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
+				BFC1D26C1AEC7013002C34A4 /* Trackee.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				51DDC6451AA3A2D500EF0678 /* FBViewController.swift in Sources */,
 				E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */,
 				E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */,
+				BFC1D26D1AEC7013002C34A4 /* Trackee.swift in Sources */,
 				BFC1D2691AEB41D0002C34A4 /* ShareModel.swift in Sources */,
 				E3D3782A1AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift in Sources */,
 				B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */,

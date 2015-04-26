@@ -12,19 +12,19 @@ import Foundation
 class ShareModel
 {
     
-    var current_lat : Double! = 10.0
-    var current_long : Double! = 10.0
-    var ending_lat : Double! = 10.0
-    var ending_long : Double! = 10.0
-    var starting_lat : Double! = 10.0
-    var starting_long : Double! = 10.0
-    var start_time = NSDate();
-    var end_time = NSDate();
-    var userid : Double! = 10.0
-    
+    static var current_lat : Double! = 10.0
+    static var current_long : Double! = 10.0
+    static var ending_lat : Double! = 10.0
+    static var ending_long : Double! = 10.0
+    static var starting_lat : Double! = 10.0
+    static var starting_long : Double! = 10.0
+    static var start_time = NSDate();
+    static var end_time = NSDate();
+    static var userid : Double! = 10.0
+    static var uniqueuserid : String!
     
 //func StartNewRoute(current_lat : Double!,current_long : Double!,ending_lat : Double!,ending_long : Double!,starting_lat : Double!,starting_long : Double!,start_time: NSDate!)
-func StartNewRoute()
+    static func StartNewRoute(completion: (()->()))
 {
     
             let myUrl = NSURL(string: "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/trackNewRoute");
@@ -59,10 +59,10 @@ func StartNewRoute()
                     if let parseJSON = myJSON {
                         // Now we can access value of First Name by its key
                         var firstNameValue = parseJSON["id"] as? String
-                        uniqueuserid = parseJSON["id"] as? String
-                        println("id: \(uniqueuserid)")
+                        self.uniqueuserid = parseJSON["id"] as? String
+                        println("id: \(self.uniqueuserid)")
                     }
-                    
+                    completion()
         }
         
         task.resume()
@@ -70,7 +70,7 @@ func StartNewRoute()
         
     }
     
-func GetRouteByID(userid : String!)
+static func GetRouteByID(userid : String!)
     {
         println("InGet")
         let url = "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/getRouteByID" //5f88eeea39ab660d924cc3c1dd5e8386
@@ -120,7 +120,7 @@ func GetRouteByID(userid : String!)
     }
 
     
-    func updateRouteByID()
+    static func updateRouteByID(id : String, completion : ((json : NSDictionary!)->()))
     {
         
         let myUrl = NSURL(string: "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/updateRouteByID");
@@ -157,6 +157,7 @@ func GetRouteByID(userid : String!)
 //                var firstNameValue = parseJSON["id"] as? String
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
+            completion(json: myJSON)
             }
         
     
@@ -164,6 +165,16 @@ func GetRouteByID(userid : String!)
         println("updated")
         
 }
+    static func updateTrackee(trackee : Trackee){
+        
+        updateRouteByID(trackee.id){
+            json in
+            if let dict = json{
+                trackee.trackeeData = dict
+            }
+            
+        }
+    }
 
 }
     

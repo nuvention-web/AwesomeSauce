@@ -144,24 +144,30 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
     }
     
-    func updateMyMarker()->(){
-        if path == nil{
-            return
+    func updateMyMarker(){
+        if(myMarker == nil){
+            myMarker = GMSMarker()
+            
+            //myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
+            myMarker.title = "Matthew"
+            myMarker.appearAnimation = kGMSMarkerAnimationNone
+            
         }
         
         var red = CGFloat(min(deviationIndex, 1))
         var green = CGFloat(max(1-deviationIndex,0))
-        if(myMarker == nil){
-            myMarker = GMSMarker()
-
-            //myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
-            myMarker.title = "Matthew"
-            myMarker.appearAnimation = kGMSMarkerAnimationNone
-
-        }
+        
         myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
         myMarker.position = self.currentCoord
         myMarker.map = self.mapView
+    }
+    func updateMarker(marker : GMSMarker, position : CLLocationCoordinate2D, deviationIndex : Double!)->(){
+        var red = CGFloat(min(deviationIndex, 1))
+        var green = CGFloat(max(1-deviationIndex,0))
+        
+        marker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
+        marker.position = position
+        marker.map = self.mapView
         
     }
     
@@ -365,14 +371,15 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     
     func sendMessage(sender: AnyObject, trackingID : String) {
         var messageViewController = MFMessageComposeViewController()
-        var trackingID = "zasdflkjadsf"
         messageViewController.body = "I would like to share my location with you! The following link will allow you to track me until I reach my destination. Helm://?action=track&id=\(trackingID)"
         
         messageViewController.recipients = []
         messageViewController.messageComposeDelegate = self
-        
-        self.presentViewController(messageViewController, animated: true, completion: nil)
-        
+        if(!MFMessageComposeViewController.canSendText()){
+            println("messageViewController can't send text")
+        } else {
+            self.presentViewController(messageViewController, animated: false, completion: nil)
+        }
     }
     
     func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
@@ -391,19 +398,71 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         }
     }
     
+    func shareRoute(){
+        var id = ShareModel.uniqueuserid
+        if id == nil{
+            ShareModel.StartNewRoute(){
+                id = ShareModel.uniqueuserid
+                self.sendMessage(self, trackingID: id)
+            }
+        }
+        else {
+            sendMessage(self, trackingID: id)
+        }
+
+    }
+    
+    var trackees : [Trackee] = []
     
     
+    func trackNewID(id: String){
+        if !arrayContainsTrackee(id){
+            var trackee : Trackee = Trackee(id : id)
+            trackees.append(trackee)
+            ShareModel.updateTrackee(trackee)
+            if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil
+                && trackee.trackeeData["ending_address"] != nil){
+                    fetchDirectionsFrom(CLLocationCoordinate2D(latitude: trackee.trackeeData["starting_lat"] as! Double, longitude: trackee.trackeeData["starting_long"] as! Double), to: trackee.  trackeeData["ending_address"] as! String) {
+                        optionalRoute in
+                    if let encodedRoute = optionalRoute {
+                        // 3
+                    
+                        let path = GMSPath(fromEncodedPath: encodedRoute)
+                        trackee.path = path
+                    }
+                }
+            }
+        }
+    }
     
+    func arrayContainsTrackee(id : String) -> (Bool){
+        for trackee : Trackee in trackees{
+            if trackee.id == id{
+                return true
+            }
+        }
+        return false
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func renderAllPaths(){
+        self.mapView.clear()
+        for trackee : Trackee in trackees {
+            let line = GMSPolyline(path: trackee.path)
+            line.strokeWidth = 4.0
+            line.tappable = true
+            line.map = self.mapView
+            
+            let marker = GMSMarker()
+            updateMarker(marker, position: CLLocationCoordinate2D(latitude: trackee.trackeeData["current_lat"] as! Double,longitude: trackee.trackeeData["current_long"] as! Double), deviationIndex: trackee.trackeeData["deviation_index"] as? Double)
+        }
+        
+        updateMyMarker()
+        let line = GMSPolyline(path: self.path)
+        // 4
+        line.strokeWidth = 4.0
+        line.tappable = true
+        line.map = self.mapView
+    }
     
 }
 
