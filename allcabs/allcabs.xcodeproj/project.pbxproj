@@ -81,7 +81,7 @@
 		BFC1D2681AEB41D0002C34A4 /* ShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		BFC1D26C1AEC7013002C34A4 /* Trackee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackee.swift; sourceTree = "<group>"; };
 		BFD0E95C1AAEC29300D50AEE /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = default.gpx; path = allcabs/default.gpx; sourceTree = "<group>"; };
-		E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allcabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32E3CEE1A9B9E4D0096EA3D /* Helm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		E32E3CEF1A9B9E4D0096EA3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */,
+				E32E3CEE1A9B9E4D0096EA3D /* Helm.app */,
 				E32E3D051A9B9E4E0096EA3D /* allcabsTests.xctest */,
 			);
 			name = Products;
@@ -288,7 +288,7 @@
 			);
 			name = allcabs;
 			productName = allcabs;
-			productReference = E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */;
+			productReference = E32E3CEE1A9B9E4D0096EA3D /* Helm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E32E3D041A9B9E4E0096EA3D /* allcabsTests */ = {
@@ -566,7 +566,7 @@
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Helm;
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -588,7 +588,7 @@
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Helm;
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 			};
 			name = Release;
