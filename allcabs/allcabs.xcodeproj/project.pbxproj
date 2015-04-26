@@ -14,6 +14,7 @@
 		51DDC8381AA5899300EF0678 /* Patricia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8331AA5899300EF0678 /* Patricia.jpg */; };
 		51DDC8391AA5899300EF0678 /* Reshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8341AA5899300EF0678 /* Reshu.jpg */; };
 		51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8351AA5899300EF0678 /* Richard.jpg */; };
+		B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C193F91AED7D7A003B618B /* EasyDate.swift */; };
 		B3FAEBB81AE6B2170012385E /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FAEBB71AE6B2170012385E /* cancel.png */; };
 		B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FAEBB91AE6BBDB0012385E /* MenuTableViewController.swift */; };
 		BFC1D2651AEB024A002C34A4 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC1D2641AEB024A002C34A4 /* share.png */; };
@@ -68,6 +69,7 @@
 		51DDC8331AA5899300EF0678 /* Patricia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Patricia.jpg; sourceTree = "<group>"; };
 		51DDC8341AA5899300EF0678 /* Reshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reshu.jpg; sourceTree = "<group>"; };
 		51DDC8351AA5899300EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
+		B3C193F91AED7D7A003B618B /* EasyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDate.swift; sourceTree = "<group>"; };
 		B3FAEBB71AE6B2170012385E /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
 		B3FAEBB91AE6BBDB0012385E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		BFC1D2641AEB024A002C34A4 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
 				BFC1D26C1AEC7013002C34A4 /* Trackee.swift */,
+				B3C193F91AED7D7A003B618B /* EasyDate.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */,
 				51DDC62C1AA15F5B00EF0678 /* friendList.swift in Sources */,
 				BFC1D2671AEB038A002C34A4 /* ShareViewController.swift in Sources */,
+				B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */,
 				E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */,
 				E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */,
 			);

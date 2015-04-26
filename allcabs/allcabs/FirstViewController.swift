@@ -166,8 +166,15 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         myMarker.map = self.mapView
     }
     func updateMarker(marker : GMSMarker, position : CLLocationCoordinate2D, deviationIndex : Double!)->(){
-        var red = CGFloat(min(deviationIndex, 1))
-        var green = CGFloat(max(1-deviationIndex,0))
+        var red : CGFloat
+        var green : CGFloat
+        if let index = deviationIndex{
+            red = CGFloat(min(index, 1))
+            green = CGFloat(max(1-index,0))
+        } else {
+            red = CGFloat(0)
+            green = CGFloat(1)
+        }
         
         marker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
         marker.position = position
@@ -226,7 +233,9 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
-        
+        struct staticHolder {
+            static var lastTimeUpdated = NSDate()
+        }
         if (currentCoord == nil && mapView?.myLocation?.coordinate != nil){
             currentCoord = coord
             var camera = GMSCameraPosition.cameraWithTarget(mapView.myLocation.coordinate, zoom: 9)
@@ -238,7 +247,18 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         }
         self.currentCoord = coord
         calculateDeviationIndex()
-        updateMyMarker()
+        
+        if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 10{
+            staticHolder.lastTimeUpdated = NSDate()
+            updateAllTrackees(){}
+            if((ShareModel.uniqueuserid) != nil){
+                ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self, completion: nil)
+            }
+        }else if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 5{
+            self.renderAllPaths()
+        }else {
+            updateMyMarker()
+        }
     }
     
     // authorization status
@@ -295,6 +315,9 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
 
     func startRoute(){
         //endingCoord = CLLocationCoordinate2D(latitude: 37.3382,longitude: -121.8863)
+        if(mapView.myLocation != nil){
+            self.startingCoord = CLLocationCoordinate2D(latitude: mapView.myLocation.coordinate.latitude, longitude: mapView.myLocation.coordinate.longitude)
+        }
         fetchDirectionsFrom(mapView.myLocation?.coordinate, to: endingAddress) {optionalRoute in
             if let encodedRoute = optionalRoute {
                 // 3
@@ -408,7 +431,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     func shareRoute(){
         var id = ShareModel.uniqueuserid
         if id == nil{
-            ShareModel.StartNewRoute(){
+            ShareModel.startNewRoute(self){
                 id = ShareModel.uniqueuserid
                 self.sendMessage(self, trackingID: id)
             }
@@ -422,23 +445,11 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     var trackees : [Trackee] = []
     
     
-    func trackNewID(id: String){
+    @IBAction func trackNewID(sender : AppDelegate){
+        var id = sender.id
         if !arrayContainsTrackee(id){
             var trackee : Trackee = Trackee(id : id)
             trackees.append(trackee)
-            ShareModel.updateTrackee(trackee)
-            if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil
-                && trackee.trackeeData["ending_address"] != nil){
-                    fetchDirectionsFrom(CLLocationCoordinate2D(latitude: trackee.trackeeData["starting_lat"] as! Double, longitude: trackee.trackeeData["starting_long"] as! Double), to: trackee.trackeeData["ending_address"] as! String) {
-                        optionalRoute in
-                    if let encodedRoute = optionalRoute {
-                        // 3
-                    
-                        let path = GMSPath(fromEncodedPath: encodedRoute)
-                        trackee.path = path
-                    }
-                }
-            }
         }
     }
     
@@ -460,7 +471,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             line.map = self.mapView
             
             let marker = GMSMarker()
-            updateMarker(marker, position: CLLocationCoordinate2D(latitude: trackee.trackeeData["current_lat"] as! Double,longitude: trackee.trackeeData["current_long"] as! Double), deviationIndex: trackee.trackeeData["deviation_index"] as? Double)
+            updateMarker(marker, position: CLLocationCoordinate2D(latitude: (trackee.trackeeData["current_lat"] as! NSString).doubleValue,longitude: (trackee.trackeeData["current_long"] as! NSString).doubleValue), deviationIndex: (trackee.trackeeData["deviation_index"] as? NSString)?.doubleValue)
         }
         
         updateMyMarker()
@@ -471,6 +482,29 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         line.map = self.mapView
     }
     
+    func updateAllTrackees(completion:(()->())!){
+        for trackee : Trackee in trackees {
+            if trackee.path == nil{
+                ShareModel.updateTrackee(trackee){
+                    if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil && trackee.trackeeData["ending_address"] != nil){
+                        self.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: (trackee.trackeeData["starting_lat"] as! NSString).doubleValue, longitude: (trackee.trackeeData["starting_long"] as! NSString).doubleValue), to: trackee.trackeeData["ending_address"] as! String) {
+                                optionalRoute in
+                                if let encodedRoute = optionalRoute {
+                                    // 3
+                                    let path = GMSPath(fromEncodedPath: encodedRoute)
+                                    trackee.path = path
+                                }
+                            
+                        } //fetchDirections
+                    
+                    } //if !nil
+                    completion?()
+                } //updateTrackee
+            } else {
+                ShareModel.updateTrackee(trackee, completion: completion)
+            }
+        }
+    }
 }
 
 

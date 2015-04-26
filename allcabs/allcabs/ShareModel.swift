@@ -11,57 +11,76 @@ import Foundation
 
 class ShareModel
 {
-    
-    static var current_lat : Double! = 10.0
-    static var current_long : Double! = 10.0
-    static var ending_address : String! = "P. Sherman Wallabee Way"
-    static var starting_lat : Double! = 10.0
-    static var starting_long : Double! = 10.0
-    static var start_time = NSDate();
-    static var end_time = NSDate();
-    static var userid : Double! = 10.0
+    static let myBaseURL : String = "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php"
     static var uniqueuserid : String!
     
-//func StartNewRoute(current_lat : Double!,current_long : Double!,ending_lat : Double!,ending_long : Double!,starting_lat : Double!,starting_long : Double!,start_time: NSDate!)
-    static func StartNewRoute(completion: (()->()))
-{
+    static func getParamStringFromViewController(firstViewController : FirstViewController) -> (String){
+        let dictionary : [String:String] = getDictionaryFromViewController(firstViewController)
+        return getParamStringFromDictionary(dictionary)
+    }
     
-            let myUrl = NSURL(string: "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/trackNewRoute");
-            let request = NSMutableURLRequest(URL:myUrl!);
+    static func getDictionaryFromViewController(firstViewController : FirstViewController) -> ([String:String]){
+        var dictionary = [String:String]()
+        dictionary["current_lat"] = firstViewController.currentCoord?.latitude.description
+        dictionary["current_long"] = firstViewController.currentCoord?.longitude.description
+        dictionary["ending_address"] = firstViewController.endingAddress
+        dictionary["starting_lat"] = firstViewController.startingCoord?.latitude.description
+        dictionary["starting_long"] = firstViewController.startingCoord?.longitude.description
+        dictionary["deviation_index"] = firstViewController.deviationIndex.description
+        return dictionary
+    }
+    
+    static func getParamStringFromDictionary(dictionary : [String:String]) -> (String){
+        var paramString = ""
+        for (key,value) in dictionary{
+            if paramString != ""{
+                paramString+="&"
+            }
+            paramString += "\(key)=\(value)"
+        }
+        
+        return paramString
+        
+    }
+//func StartNewRoute(current_lat : Double!,current_long : Double!,ending_lat : Double!,ending_long : Double!,starting_lat : Double!,starting_long : Double!,start_time: NSDate!)
+    static func startNewRoute(sender: FirstViewController, completion: (()->())!)
+    {
+        let myUrl = NSURL(string: "\(myBaseURL)/trackNewRoute");
+        let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
         // Compose a query string
-            let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_address=\(ending_address)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)"
-            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        let postString = getParamStringFromViewController(sender)
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
-                if error != nil
-                {
-                    println("error=\(error)")
-                    return
-                }
+            if error != nil
+            {
+                println("error=\(error)")
+                return
+            }
             
-                    // You can print out response object
-                    println("response = \(response)")
+            // You can print out response object
+            println("response = \(response)")
+        
+            // Print out response body
+            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("responseString = \(responseString)")
             
-                    // Print out response body
-                    let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("responseString = \(responseString)")
+            //Let's convert response sent from a server side script to a NSDictionary object:
             
-                    //Let's convert response sent from a server side script to a NSDictionary object:
+            var err: NSError?
+            var myJSON = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error:&err) as? NSDictionary
             
-                    var err: NSError?
-                    var myJSON = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error:&err) as? NSDictionary
-            
-                    if let parseJSON = myJSON {
-                        // Now we can access value of First Name by its key
-                        var firstNameValue = parseJSON["id"] as? String
-                        ShareModel.uniqueuserid = parseJSON["id"] as? String
-                        println("id: \(ShareModel.uniqueuserid)")
-                    }
-                    completion()
+            if let parseJSON = myJSON {
+                // Now we can access value of First Name by its key
+                var firstNameValue = parseJSON["id"] as? String
+                ShareModel.uniqueuserid = parseJSON["id"] as? String
+                println("id: \(ShareModel.uniqueuserid)")
+            }
+            completion?()
         }
         
         task.resume()
@@ -69,11 +88,11 @@ class ShareModel
         
     }
     
-static func GetRouteByID(userid : String!)
+    static func getRouteByID(id : String, completion : ((json : NSDictionary!)->())!)
     {
         println("InGet")
-        let url = "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/getRouteByID" //5f88eeea39ab660d924cc3c1dd5e8386
-        let parameterString = "id=5f88eeea39ab660d924cc3c1dd5e8386"
+        let url = "\(myBaseURL)/getRouteByID" //5f88eeea39ab660d924cc3c1dd5e8386
+        let parameterString = "id=\(id)"
         let myUrl = NSURL(string: "\(url)?\(parameterString)")
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "GET";
@@ -110,7 +129,7 @@ static func GetRouteByID(userid : String!)
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
 //            }
-            
+            completion?(json: myJSON)
 
     }
     task.resume()
@@ -119,7 +138,7 @@ static func GetRouteByID(userid : String!)
     }
 
     
-    static func updateRouteByID(id : String, completion : ((json : NSDictionary!)->()))
+    static func updateRouteByID(id : String, sender : FirstViewController, completion : (()->())!)
     {
         
         let myUrl = NSURL(string: "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/updateRouteByID");
@@ -127,7 +146,7 @@ static func GetRouteByID(userid : String!)
         request.HTTPMethod = "POST";
         
         // Compose a query string
-        let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_address=\(ending_address)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)&id=5f88eeea39ab660d924cc3c1dd5e8386"
+        let postString = "id=\(id)&\(getParamStringFromViewController(sender))"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
@@ -156,7 +175,7 @@ static func GetRouteByID(userid : String!)
 //                var firstNameValue = parseJSON["id"] as? String
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
-            completion(json: myJSON)
+            completion?()
             }
         
     
@@ -164,14 +183,14 @@ static func GetRouteByID(userid : String!)
         println("updated")
         
 }
-    static func updateTrackee(trackee : Trackee){
+    static func updateTrackee(trackee : Trackee, completion: (()->())!){
         
-        updateRouteByID(trackee.id){
+        getRouteByID(trackee.id){
             json in
             if let dict = json{
                 trackee.trackeeData = dict
             }
-            
+            completion?()
         }
     }
 
