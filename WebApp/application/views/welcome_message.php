@@ -110,7 +110,7 @@
           <p class="lead">Our app will show how much you deviate from the expected route and alert family and friends when the deviation is too great. Rest assured!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="#" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/routedeviation.png" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -128,7 +128,7 @@
 
       <hr class="featurette-divider">
 
-
+<!--
       <div class="row featurette">
 	<div class="col-md-7">
 	  <h2 class="featurette-heading">Panic Button</h2>
@@ -138,7 +138,7 @@
 	  <img class="featurette-image img-responsive" src="#" style="width:350;height:350px" align="right" alt="Generic placeholder image">
 	</div>
       </div>
-
+-->
 
 
 
