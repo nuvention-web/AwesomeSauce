@@ -35,7 +35,9 @@ import UIKit
         if(swRevealViewController == nil || firstViewController == nil){
             getOtherViewControllers()
         }
-        firstViewController.shareRoute()
+        firstViewController?.shareRoute()
+        var button = firstViewController?.navigationItem.leftBarButtonItem
+        UIApplication.sharedApplication().sendAction(button!.action, to: button?.target, from: firstViewController, forEvent: nil)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

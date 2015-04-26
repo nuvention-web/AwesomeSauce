@@ -9,8 +9,9 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    static var firstViewController : FirstViewController!
     var window: UIWindow?
 
 
@@ -26,6 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
         return wasHandled
         */
+        println("Handling URL")
+        var action : String?
+        var id : String
+        var urlstring = url.absoluteString!
+        var parameters = split(urlstring){$0 == "?"}[1]
+        var parameterList = split(parameters){$0 == "&"}
+        for parameter : String in parameterList{
+            if parameter.hasPrefix("action"){
+                let value = split(parameter) {$0 == "="}[1]
+                if value == "track"{
+                    action = "trackNewID:"
+                }
+            } else if parameter.hasPrefix("id"){
+                let value = split(parameter) {$0 == "="}[1]
+                id = value
+            }
+        }
+            
+        UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: AppDelegate.firstViewController, forEvent: nil)
         return true
     }
 

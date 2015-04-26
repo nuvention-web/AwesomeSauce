@@ -54,7 +54,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         super.viewDidLoad()
         loadSearchController()
         setupNotificationSettings()
-        
+        AppDelegate.firstViewController = self
         var camera = GMSCameraPosition.cameraWithTarget(sydneyCoord, zoom: 7)
         mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
@@ -98,6 +98,10 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         localNotification.category = "devaitionAlertCategory"
         localNotification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        let alertController = UIAlertController(title: "Deviated From Path",message: "YYou have significantly deviated from your expected path!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     
@@ -376,6 +380,9 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         messageViewController.recipients = []
         messageViewController.messageComposeDelegate = self
         if(!MFMessageComposeViewController.canSendText()){
+            let alertController = UIAlertController(title: "Unable To Text",message: "You are unable to text from your device.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
             println("messageViewController can't send text")
         } else {
             self.presentViewController(messageViewController, animated: false, completion: nil)
@@ -422,7 +429,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             ShareModel.updateTrackee(trackee)
             if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil
                 && trackee.trackeeData["ending_address"] != nil){
-                    fetchDirectionsFrom(CLLocationCoordinate2D(latitude: trackee.trackeeData["starting_lat"] as! Double, longitude: trackee.trackeeData["starting_long"] as! Double), to: trackee.  trackeeData["ending_address"] as! String) {
+                    fetchDirectionsFrom(CLLocationCoordinate2D(latitude: trackee.trackeeData["starting_lat"] as! Double, longitude: trackee.trackeeData["starting_long"] as! Double), to: trackee.trackeeData["ending_address"] as! String) {
                         optionalRoute in
                     if let encodedRoute = optionalRoute {
                         // 3

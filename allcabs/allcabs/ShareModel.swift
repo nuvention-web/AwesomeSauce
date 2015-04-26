@@ -14,8 +14,7 @@ class ShareModel
     
     static var current_lat : Double! = 10.0
     static var current_long : Double! = 10.0
-    static var ending_lat : Double! = 10.0
-    static var ending_long : Double! = 10.0
+    static var ending_address : String! = "P. Sherman Wallabee Way"
     static var starting_lat : Double! = 10.0
     static var starting_long : Double! = 10.0
     static var start_time = NSDate();
@@ -32,7 +31,7 @@ class ShareModel
         request.HTTPMethod = "POST";
         
         // Compose a query string
-            let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_lat=\(ending_lat)&ending_long=\(ending_long)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)"
+            let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_address=\(ending_address)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)"
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
@@ -59,8 +58,8 @@ class ShareModel
                     if let parseJSON = myJSON {
                         // Now we can access value of First Name by its key
                         var firstNameValue = parseJSON["id"] as? String
-                        self.uniqueuserid = parseJSON["id"] as? String
-                        println("id: \(self.uniqueuserid)")
+                        ShareModel.uniqueuserid = parseJSON["id"] as? String
+                        println("id: \(ShareModel.uniqueuserid)")
                     }
                     completion()
         }
@@ -128,7 +127,7 @@ static func GetRouteByID(userid : String!)
         request.HTTPMethod = "POST";
         
         // Compose a query string
-        let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_lat=\(ending_lat)&ending_long=\(ending_long)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)&id=5f88eeea39ab660d924cc3c1dd5e8386"
+        let postString = "current_lat=\(current_lat)&current_long=\(current_long)&ending_address=\(ending_address)&starting_lat=\(starting_lat)&starting_long=\(starting_long)&start_time=\(start_time)&id=5f88eeea39ab660d924cc3c1dd5e8386"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
