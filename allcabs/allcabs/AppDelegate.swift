@@ -13,7 +13,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static var firstViewController : FirstViewController!
     var window: UIWindow?
-
+    var id : String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         println("Handling URL")
         var action : String?
-        var id : String
         var urlstring = url.absoluteString!
         var parameters = split(urlstring){$0 == "?"}[1]
         var parameterList = split(parameters){$0 == "&"}
@@ -41,11 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else if parameter.hasPrefix("id"){
                 let value = split(parameter) {$0 == "="}[1]
-                id = value
+                self.id = value
             }
         }
             
-        UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: AppDelegate.firstViewController, forEvent: nil)
+        UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: self, forEvent: nil)
+        
         return true
     }
 

@@ -14,6 +14,9 @@
 		51DDC8381AA5899300EF0678 /* Patricia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8331AA5899300EF0678 /* Patricia.jpg */; };
 		51DDC8391AA5899300EF0678 /* Reshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8341AA5899300EF0678 /* Reshu.jpg */; };
 		51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8351AA5899300EF0678 /* Richard.jpg */; };
+		B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C193F91AED7D7A003B618B /* EasyDate.swift */; };
+		B3C193FC1AED8CE5003B618B /* bluerect.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C193FB1AED8CE5003B618B /* bluerect.png */; };
+		B3C193FE1AED8D76003B618B /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C193FD1AED8D76003B618B /* Icon-60@3x.png */; };
 		B3FAEBB81AE6B2170012385E /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FAEBB71AE6B2170012385E /* cancel.png */; };
 		B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FAEBB91AE6BBDB0012385E /* MenuTableViewController.swift */; };
 		BFC1D2651AEB024A002C34A4 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC1D2641AEB024A002C34A4 /* share.png */; };
@@ -68,6 +71,9 @@
 		51DDC8331AA5899300EF0678 /* Patricia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Patricia.jpg; sourceTree = "<group>"; };
 		51DDC8341AA5899300EF0678 /* Reshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reshu.jpg; sourceTree = "<group>"; };
 		51DDC8351AA5899300EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
+		B3C193F91AED7D7A003B618B /* EasyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDate.swift; sourceTree = "<group>"; };
+		B3C193FB1AED8CE5003B618B /* bluerect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluerect.png; sourceTree = "<group>"; };
+		B3C193FD1AED8D76003B618B /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "icons/Icon-60@3x.png"; sourceTree = "<group>"; };
 		B3FAEBB71AE6B2170012385E /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
 		B3FAEBB91AE6BBDB0012385E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		BFC1D2641AEB024A002C34A4 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -75,7 +81,7 @@
 		BFC1D2681AEB41D0002C34A4 /* ShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		BFC1D26C1AEC7013002C34A4 /* Trackee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackee.swift; sourceTree = "<group>"; };
 		BFD0E95C1AAEC29300D50AEE /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = default.gpx; path = allcabs/default.gpx; sourceTree = "<group>"; };
-		E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allcabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32E3CEE1A9B9E4D0096EA3D /* Helm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E3CF21A9B9E4E0096EA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E3CF31A9B9E4E0096EA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 		51DDC8301AA5899300EF0678 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B3C193FD1AED8D76003B618B /* Icon-60@3x.png */,
+				B3C193FB1AED8CE5003B618B /* bluerect.png */,
 				B3FAEBB71AE6B2170012385E /* cancel.png */,
 				51DDC8311AA5899300EF0678 /* James.jpg */,
 				BFC1D2641AEB024A002C34A4 /* share.png */,
@@ -198,7 +206,7 @@
 		E32E3CEF1A9B9E4D0096EA3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */,
+				E32E3CEE1A9B9E4D0096EA3D /* Helm.app */,
 				E32E3D051A9B9E4E0096EA3D /* allcabsTests.xctest */,
 			);
 			name = Products;
@@ -223,6 +231,7 @@
 				E32E3CFE1A9B9E4E0096EA3D /* LaunchScreen.xib */,
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
 				BFC1D26C1AEC7013002C34A4 /* Trackee.swift */,
+				B3C193F91AED7D7A003B618B /* EasyDate.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -279,7 +288,7 @@
 			);
 			name = allcabs;
 			productName = allcabs;
-			productReference = E32E3CEE1A9B9E4D0096EA3D /* allcabs.app */;
+			productReference = E32E3CEE1A9B9E4D0096EA3D /* Helm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E32E3D041A9B9E4E0096EA3D /* allcabsTests */ = {
@@ -381,6 +390,7 @@
 				B3FAEBB81AE6B2170012385E /* cancel.png in Resources */,
 				E32E3D001A9B9E4E0096EA3D /* LaunchScreen.xib in Resources */,
 				E32E3CFD1A9B9E4E0096EA3D /* Images.xcassets in Resources */,
+				B3C193FE1AED8D76003B618B /* Icon-60@3x.png in Resources */,
 				51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */,
 				51DDC8371AA5899300EF0678 /* Matthew.jpg in Resources */,
 				51DDC8361AA5899300EF0678 /* James.jpg in Resources */,
@@ -388,6 +398,7 @@
 				51DDC8391AA5899300EF0678 /* Reshu.jpg in Resources */,
 				BFD0E95D1AAEC29300D50AEE /* default.gpx in Resources */,
 				BFC1D2651AEB024A002C34A4 /* share.png in Resources */,
+				B3C193FC1AED8CE5003B618B /* bluerect.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +425,7 @@
 				B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */,
 				51DDC62C1AA15F5B00EF0678 /* friendList.swift in Sources */,
 				BFC1D2671AEB038A002C34A4 /* ShareViewController.swift in Sources */,
+				B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */,
 				E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */,
 				E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */,
 			);
@@ -554,7 +566,7 @@
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Helm;
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -576,7 +588,7 @@
 				);
 				INFOPLIST_FILE = allcabs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Helm;
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 			};
 			name = Release;

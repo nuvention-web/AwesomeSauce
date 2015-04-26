@@ -11,7 +11,7 @@ import Foundation
 class Trackee {
     var path : GMSPath!
     var id : String
-    var trackeeData : NSDictionary!
+    var trackeeData : NSDictionary = [String:String]()
     
     init(id : String){
         self.id = id
