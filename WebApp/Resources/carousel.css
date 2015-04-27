@@ -58,6 +58,11 @@ body {
  margin-top: 80px;
 }
 
+#logo {
+  margin-bottom: 150px;
+  margin-left: 50px;
+}
+
 /* Declare heights because of positioning of img element */
 .carousel .item {
   position:relative;
