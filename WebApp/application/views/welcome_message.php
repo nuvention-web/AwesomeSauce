@@ -79,7 +79,7 @@
           <img src="/AwesomeSauce/WebApp/Resources/image2.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-	    <img src="/AwesomeSauce/WebApp/Resources/helm.png" style="width:120px;height:120px" class="img-circle" id="logo" align="middle">
+	    <img src="/AwesomeSauce/WebApp/Resources/helm2.png" style="width:120px;height:120px" class="img-circle" id="logo" align="middle">
 	      <h1> Helm </h1>
               <p>The mobile app that keeps you safe when you are travelling</p>
               <form class="form-inline" id="signup" method="POST" action="index.php/signup_page">
