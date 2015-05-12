@@ -99,7 +99,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         localNotification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        let alertController = UIAlertController(title: "Deviated From Path",message: "YYou have significantly deviated from your expected path!", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Deviated From Path",message: "You have significantly deviated from your expected path!", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
