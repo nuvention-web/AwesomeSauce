@@ -58,6 +58,11 @@ body {
  margin-top: 80px;
 }
 
+#logo {
+  margin-bottom: 120px;
+  margin-left: 80px;
+}
+
 /* Declare heights because of positioning of img element */
 .carousel .item {
   position:relative;
@@ -144,8 +149,8 @@ margin-bottom: 100px;
   /*Bump up size of header content*/
   .carousel-caption h1 {
     font-size: 60px;
-    padding: 40px;
-    padding-left: 100px;
+    padding-bottom: 60px;
+    padding-left: 80px;
   }
 
   /* Bump up size of carousel content */

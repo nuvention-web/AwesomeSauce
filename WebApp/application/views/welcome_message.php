@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/AwesomeSauce/WebApp/Resources/helm.ico">
 
     <title>Helm</title>
 
@@ -79,8 +79,9 @@
           <img src="/AwesomeSauce/WebApp/Resources/image2.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1> Helm </h1>
-              <p>The mobile application that keeps you safe while travelling alone</p>
+	    <img src="/AwesomeSauce/WebApp/Resources/helm2.png" style="width:120px;height:120px" class="img-circle" id="logo" align="middle">
+	      <h1> Helm </h1>
+              <p>The mobile app that keeps you safe when you are travelling</p>
               <form class="form-inline" id="signup" method="POST" action="index.php/signup_page">
 		<div class="form-group">
 		  <input class="form-control input-lg " type="text" name="email" placeholder="Enter email">
@@ -100,7 +101,7 @@
 
       <!-- START THE FEATURETTES -->
       <div class="container marketing">
-	<h2 id="feature-header" align="center">Check out the main features of our app!</h2>
+	<h2 id="feature-header" align="center">Coming soon to App Store. Check out our features!</h2>
       
       <hr class="featurette-divider">
 
@@ -110,7 +111,7 @@
           <p class="lead">Our app will show how much you deviate from the expected route and alert family and friends when the deviation is too great. Rest assured!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/routedeviation.png" style="width:350px;height:350px" align="right" alt="Generic placeholder image">
+          <img class="featurette-image img-rounded" src ="/AwesomeSauce/WebApp/Resources/deviation.png" style="width:450px;height:350px" align="right" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -118,17 +119,18 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="#" style="width:350px;height:350px" alt="Generic placeholder image">
+          <img class="featurette-image img-rounded" src="/AwesomeSauce/WebApp/Resources/tracking.png" style="width:300px;height:500px" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">Real Time Tracking</h2>
-          <p class="lead">Our app will allow family and friends to track your position while on the move, but no worries, the feature automatically stops when you reach the destination. No violation of privacy.</p>
+          <p class="lead">Our app will allow family and friends to track your position while on the move, and automatically shuts off when you reach the destination. Safe and easy. No violation of privacy.</p>
         </div>
       </div>
 
+<!--
       <hr class="featurette-divider">
 
-<!--
+
       <div class="row featurette">
 	<div class="col-md-7">
 	  <h2 class="featurette-heading">Panic Button</h2>
@@ -148,23 +150,23 @@
       <h2 id="feature-header" align=center>The Team</h2>
       <div class="row">
 	<div class="col-lg-2 col-lg-offset-1">
-	  <a href="https://www.linkedin.com/in/albrechtmatthew" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <a href="https://www.linkedin.com/in/albrechtmatthew" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/matt.jpg" alt="Generic placeholder image" width="140" height="140"></a>
 	  <h3>Matt</h3>
         </div>
 	<div class="col-lg-2">
-	  <a href="https://www.linkedin.com/pub/patr%C3%ADcia-gomes/18/b16/b46" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <a href="https://www.linkedin.com/pub/patr%C3%ADcia-gomes/18/b16/b46" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/patricia.jpg" alt="Generic placeholder image" width="140" height="140"></a>
 	  <h3>Patricia</h3>
 	</div>
 	<div class="col-lg-2">
-	  <a href="https://www.linkedin.com/pub/reshu-goel/a4/405/615" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <a href="https://www.linkedin.com/pub/reshu-goel/a4/405/615" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/reshu.jpg" alt="Generic placeholder image" width="140" height="140"></a>
 	  <h3>Reshu</h3>
 	</div>
 	<div class="col-lg-2">
-	  <a href="https://www.linkedin.com/in/richardliang" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+	  <a href="https://www.linkedin.com/in/richardliang" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/richard.jpg" alt="Generic placeholder image" width="140" height="140"></a>
 	  <h3>Richard</h3>
 	</div>
 	<div class="col-lg-2">
-          <a href="https://www.linkedin.com/pub/shubham-kumar/92/718/71a" target="_blank"><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></a>
+          <a href="https://www.linkedin.com/pub/shubham-kumar/92/718/71a" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/shubham.jpg" alt="Generic placeholder image" width="140" height="140"></a>
           <h3>Shubham</h3>
         </div>
       </div>
@@ -176,7 +178,7 @@
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Helm. <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+        <p>&copy; 2014 Helm. Image credit Kalyan Chakravarthy/Flickr <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
       </footer>
 
     </div><!-- /.container -->
