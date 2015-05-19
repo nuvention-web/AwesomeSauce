@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import Foundation
-import UIKit
+//import Foundation
+//import UIKit
 
 
 class friendListCell :UITableViewCell
