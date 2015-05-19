@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 
 @UIApplicationMain
 
@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyChePAVRnDw0dMcFKkiS-DCN5lMedWoL0s")
-        FBLoginView.self
-        FBProfilePictureView.self
+        //FBLoginView.self
+        //FBProfilePictureView.self
         return true
     }
 

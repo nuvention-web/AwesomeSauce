@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 
 
 class ShareModel
 {
-    static let myBaseURL : String = "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php"
+    static let myBaseURL : String = "http://helmapp.me/index.php"
     static var uniqueuserid : String!
     
     static func getParamStringFromViewController(firstViewController : FirstViewController) -> (String){

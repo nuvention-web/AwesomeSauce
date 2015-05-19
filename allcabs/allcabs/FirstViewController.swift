@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import UIKit
-import CoreLocation
-import MapKit
+//import UIKit
+//import CoreLocation
 import MessageUI
 
 class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchBarDelegate, MFMessageComposeViewControllerDelegate {
