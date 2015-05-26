@@ -485,17 +485,18 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         for trackee : Trackee in trackees {
             if trackee.path == nil{
                 ShareModel.updateTrackee(trackee){
-                    if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil && trackee.trackeeData["ending_address"] != nil){
-                        self.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: (trackee.trackeeData["starting_lat"] as! NSString).doubleValue, longitude: (trackee.trackeeData["starting_long"] as! NSString).doubleValue), to: trackee.trackeeData["ending_address"] as! String) {
-                                optionalRoute in
-                                if let encodedRoute = optionalRoute {
-                                    // 3
-                                    let path = GMSPath(fromEncodedPath: encodedRoute)
-                                    trackee.path = path
-                                }
-                            
-                        } //fetchDirections
-                    
+                    if let starting_long = trackee.trackeeData["starting_long"] as? NSString,
+                           starting_lat = trackee.trackeeData["starting_lat"] as? NSString,
+                           ending_address = trackee.trackeeData["ending_address"] as? NSString {
+                                self.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: starting_lat.doubleValue, longitude: starting_long.doubleValue), to: ending_address as! String) {
+                                    optionalRoute in
+                                    if let encodedRoute = optionalRoute {
+                                        // 3
+                                        let path = GMSPath(fromEncodedPath: encodedRoute)
+                                        trackee.path = path
+                                    }
+                                    
+                                } //fetchDirections
                     } //if !nil
                     completion?()
                 } //updateTrackee
