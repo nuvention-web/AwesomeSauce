@@ -34,11 +34,11 @@ class DeviationHelper {
         if path.count() > 1{
             
             while (!GMSGeometryIsLocationOnPathTolerance(FVC.currentCoord, path, true, distance/0.000621371)){
-                distance *= 1.5
+                distance *= 1.3
             }
-            distance /= 1.5
+            distance /= 1.3
         }
-        FVC.deviationIndex = (length > 1) ? distance / pow(length,0.65) : distance / length
+        FVC.deviationIndex = (length > 1) ? distance / pow(length,0.55) : distance / length
         if (FVC.deviationIndex > 1 && !FVC.deviatedFromPath){
             FVC.deviatedFromPath = true
             DeviationHelper.sendDeviatedAlert(FVC)
