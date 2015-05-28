@@ -69,10 +69,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     }
 
     func cancelCurrentRoute(){
-        deviationIndex = 0.0
-        path = nil
-        self.mapView.clear()
-        self.deviatedFromPath = false
+        ShareModel.finishTrackingRoute(self, completionType: .Cancelled)
     }
     
     func setupNotificationSettings(){
@@ -175,13 +172,19 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             
         }
         self.currentCoord = coord
+        if DeviationHelper.reachedDestination(self) {
+            ShareModel.finishTrackingRoute(self, completionType: .Arrived)
+            UpdateMapHelper.updateMyMarker(self)
+            return
+        }
+        
         DeviationHelper.calculateDeviationIndex(self)
         
         if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 10{
             staticHolder.lastTimeUpdated = NSDate()
             ShareModel.updateAllTrackees(self, completion:nil)
             if((ShareModel.uniqueuserid) != nil){
-                ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self, completion: nil)
+                ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self,postData: nil, completion: nil)
             }
         }else if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 5{
             UpdateMapHelper.renderAllPaths(self)

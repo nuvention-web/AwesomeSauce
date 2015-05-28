@@ -22,7 +22,9 @@ class UpdateMapHelper{
         var green = CGFloat(max(1-FVC.deviationIndex,0))
         
         myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
-        myMarker.position = FVC.currentCoord
+        if let currentCoord = FVC.currentCoord{
+            myMarker.position = FVC.currentCoord
+        }
         myMarker.map = FVC.mapView
     }
     

@@ -45,4 +45,12 @@ class DeviationHelper {
         }
     }
 
+    static func reachedDestination(FVC : FirstViewController)->(Bool){
+        if let ending_coord = FVC.path?.coordinateAtIndex(FVC.path.count()-1){
+            if GMSGeometryDistance(ending_coord, FVC.currentCoord) < 50{
+                return true
+            }
+        }
+        return false
+    }
 }
