@@ -219,7 +219,14 @@ class ShareModel
                 return
             }
         }
+        for trackee : Trackee in FVC.trackees{
+            trackee.updated = false
+        }
+        if let completion = completion{
+            completion()
+        }
     }
+    
     static func updateAllTrackees(FVC : FirstViewController, completion:(()->())!){
         for trackee : Trackee in FVC.trackees {
             if trackee.path == nil{
