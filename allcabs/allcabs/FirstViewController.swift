@@ -60,7 +60,10 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
         self.view = mapView
         
-
+        if let action = AppDelegate.actionToTake{
+            AppDelegate.actionToTake = nil
+            UIApplication.sharedApplication().sendAction(action, to: self, from: nil, forEvent: nil)
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -249,7 +252,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
         if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 10{
             staticHolder.lastTimeUpdated = NSDate()
-            updateAllTrackees(){}
+            updateAllTrackees(nil)
             if((ShareModel.uniqueuserid) != nil){
                 ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self, completion: nil)
             }
@@ -445,7 +448,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     
     
     @IBAction func trackNewID(sender : AppDelegate){
-        var id = sender.id
+        var id = AppDelegate.id
         if !arrayContainsTrackee(id){
             var trackee : Trackee = Trackee(id : id)
             trackees.append(trackee)
@@ -462,7 +465,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     }
     
     func renderAllPaths(){
-        self.mapView.clear()
+        self.mapView?.clear()
         for trackee : Trackee in trackees {
             let line = GMSPolyline(path: trackee.path)
             line.strokeWidth = 4.0
@@ -470,7 +473,11 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             line.map = self.mapView
             
             let marker = GMSMarker()
-            updateMarker(marker, position: CLLocationCoordinate2D(latitude: (trackee.trackeeData["current_lat"] as! NSString).doubleValue,longitude: (trackee.trackeeData["current_long"] as! NSString).doubleValue), deviationIndex: (trackee.trackeeData["deviation_index"] as? NSString)?.doubleValue)
+            if let current_long = trackee.trackeeData["current_long"] as? NSString,
+                current_lat = trackee.trackeeData["current_lat"] as? NSString,
+                deviation_index = trackee.trackeeData["deviation_index"] as? NSString {
+                    updateMarker(marker, position: CLLocationCoordinate2D(latitude: current_lat.doubleValue,longitude: current_long.doubleValue), deviationIndex: deviation_index.doubleValue)
+            }
         }
         
         updateMyMarker()
@@ -481,6 +488,13 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         line.map = self.mapView
     }
     
+    func updateAllCompletion(completion:(()->())!){
+        for trackee : Trackee in trackees{
+            if trackee.updated == false{
+                return
+            }
+        }
+    }
     func updateAllTrackees(completion:(()->())!){
         for trackee : Trackee in trackees {
             if trackee.path == nil{
@@ -498,10 +512,13 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
                                     
                                 } //fetchDirections
                     } //if !nil
-                    completion?()
+                    trackee.updated = true
+                    self.updateAllCompletion(completion)
                 } //updateTrackee
             } else {
-                ShareModel.updateTrackee(trackee, completion: completion)
+                ShareModel.updateTrackee(trackee){
+                    self.updateAllCompletion(completion)
+                }
             }
         }
     }

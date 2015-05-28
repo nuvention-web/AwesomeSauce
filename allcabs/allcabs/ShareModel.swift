@@ -80,7 +80,9 @@ class ShareModel
                 ShareModel.uniqueuserid = parseJSON["id"] as? String
                 println("id: \(ShareModel.uniqueuserid)")
             }
-            completion?()
+            if let completion = completion{
+                completion()
+            }
         }
         
         task.resume()
@@ -129,7 +131,9 @@ class ShareModel
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
 //            }
-            completion?(json: myJSON)
+            if let completion = completion{
+                completion(json: myJSON)
+            }
 
     }
     task.resume()
@@ -190,7 +194,9 @@ class ShareModel
             if let dict = json{
                 trackee.trackeeData = dict
             }
-            completion?()
+            if let completion = completion{
+                completion()
+            }
         }
     }
 

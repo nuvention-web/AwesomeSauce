@@ -12,8 +12,9 @@ class Trackee {
     var path : GMSPath!
     var id : String
     var trackeeData : NSDictionary = [String:String]()
-    
+    var updated : Bool
     init(id : String){
         self.id = id
+        updated = false
     }
 }
