@@ -200,5 +200,40 @@ class ShareModel
         }
     }
 
+    static func updateAllCompletion(FVC: FirstViewController, completion:(()->())!){
+        for trackee : Trackee in FVC.trackees{
+            if trackee.updated == false{
+                return
+            }
+        }
+    }
+    static func updateAllTrackees(FVC : FirstViewController, completion:(()->())!){
+        for trackee : Trackee in FVC.trackees {
+            if trackee.path == nil{
+                ShareModel.updateTrackee(trackee){
+                    if let starting_long = trackee.trackeeData["starting_long"] as? NSString,
+                        starting_lat = trackee.trackeeData["starting_lat"] as? NSString,
+                        ending_address = trackee.trackeeData["ending_address"] as? NSString {
+                            FVC.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: starting_lat.doubleValue, longitude: starting_long.doubleValue), to: ending_address as! String) {
+                                optionalRoute in
+                                if let encodedRoute = optionalRoute {
+                                    // 3
+                                    let path = GMSPath(fromEncodedPath: encodedRoute)
+                                    trackee.path = path
+                                }
+                                
+                            } //fetchDirections
+                    } //if !nil
+                    trackee.updated = true
+                    ShareModel.updateAllCompletion(FVC,completion: completion)
+                } //updateTrackee
+            } else {
+                ShareModel.updateTrackee(trackee){
+                    ShareModel.updateAllCompletion(FVC,completion: completion)
+                }
+            }
+        }
+    }
+
 }
     
