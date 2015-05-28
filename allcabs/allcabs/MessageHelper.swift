@@ -24,4 +24,27 @@ class MessageHelper{
             FVC.presentViewController(messageViewController, animated: false, completion: nil)
         }
     }
+    
+    static func getUserName(FVC : FirstViewController){
+        //1. Create the alert controller.
+        var alert = UIAlertController(title: "Name", message: "Please input your name", preferredStyle: .Alert)
+    
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        textField.text = ""
+        })
+    
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            if let textField = alert.textFields![0] as? UITextField,
+                   text = textField.text {
+                    
+                    FVC.name = text
+            }
+
+        }))
+    
+        // 4. Present the alert.
+        FVC.presentViewController(alert, animated: true, completion: nil)
+    }
 }

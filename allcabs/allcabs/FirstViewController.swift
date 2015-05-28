@@ -31,6 +31,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     let demo : Bool = true
     var deviationIndex : Double
     var path : GMSPath!
+    var name : String = ""
     
     required init(coder aDecoder: NSCoder) {
         //sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
@@ -60,6 +61,15 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
         self.view = mapView
         
+        var defaults = NSUserDefaults.standardUserDefaults()
+        let userName = defaults.stringForKey("name")
+        if let userName = userName{
+            self.name = userName
+        } else {
+            MessageHelper.getUserName(self)
+        }
+        
+        //This should be last
         if let action = AppDelegate.actionToTake{
             AppDelegate.actionToTake = nil
             UIApplication.sharedApplication().sendAction(action, to: self, from: nil, forEvent: nil)

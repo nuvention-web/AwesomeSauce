@@ -32,6 +32,7 @@ class ShareModel
         dictionary["starting_lat"] = firstViewController.startingCoord?.latitude.description
         dictionary["starting_long"] = firstViewController.startingCoord?.longitude.description
         dictionary["deviation_index"] = firstViewController.deviationIndex.description
+        dictionary["name"] = firstViewController.name
         return dictionary
     }
     

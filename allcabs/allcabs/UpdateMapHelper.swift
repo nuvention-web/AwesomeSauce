@@ -13,7 +13,7 @@ class UpdateMapHelper{
             myMarker = GMSMarker()
             
             //myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
-            myMarker.title = "" //TODO
+            myMarker.title = FVC.name
             myMarker.appearAnimation = kGMSMarkerAnimationNone
             
         }
@@ -54,6 +54,9 @@ class UpdateMapHelper{
             line.map = FVC.mapView
             
             let marker = GMSMarker()
+            if let name = trackee.trackeeData["name"] as? NSString{
+                marker.title = name as String
+            }
             if let current_long = trackee.trackeeData["current_long"] as? NSString,
                 current_lat = trackee.trackeeData["current_lat"] as? NSString,
                 deviation_index = trackee.trackeeData["deviation_index"] as? NSString {
