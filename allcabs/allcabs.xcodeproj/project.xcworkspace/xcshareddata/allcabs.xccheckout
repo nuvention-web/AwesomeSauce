@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B9D2D2AE-1D1F-4DD0-9148-AF714DD26914</string>
 	<key>IDESourceControlProjectName</key>
-	<string>allcabs</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1F9EAD04A023EDA82533582292AFFA39B29935AE</key>
 		<string>https://github.com/nuvention-web/AwesomeSauce.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>allcabs/allcabs.xcodeproj</string>
+	<string>allcabs/allcabs.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1F9EAD04A023EDA82533582292AFFA39B29935AE</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>1F9EAD04A023EDA82533582292AFFA39B29935AE</string>
 			<key>IDESourceControlWCCName</key>
-			<string>AwesomeSauce</string>
+			<string>473</string>
 		</dict>
 	</array>
 </dict>

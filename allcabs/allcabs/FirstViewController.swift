@@ -369,7 +369,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
 
     }
     
-    var trackees : [Trackee] = []
+    var trackees : [Trackee] = [Trackee]()
     
     
     @IBAction func trackNewID(sender : AppDelegate){

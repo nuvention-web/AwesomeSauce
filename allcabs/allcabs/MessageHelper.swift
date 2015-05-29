@@ -38,13 +38,73 @@ class MessageHelper{
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             if let textField = alert.textFields![0] as? UITextField,
                    text = textField.text {
-                    
                     FVC.name = text
+                    NSUserDefaults.standardUserDefaults().setObject(text, forKey: "name")
             }
 
         }))
     
         // 4. Present the alert.
         FVC.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    static func sendTrackeeDeviatedAlert(FVC : FirstViewController, trackee : Trackee){
+        
+        //Send alert
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = nil //Fire immediately
+        if let name = trackee.trackeeData["name"] as? NSString{
+            localNotification.alertBody = "\(name) has significantly deviated from their expected path!"
+        } else {
+            localNotification.alertBody = "Someone you're tracking has significantly deviated from their expected path!"
+        }
+        localNotification.alertAction = "View Map" //Action when swiping alert
+        localNotification.category = "devaitionAlertCategory"
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        let alertController = UIAlertController(title: "Deviated From Path",message: localNotification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        FVC.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    static func sendTrackeeArrivedAlert(FVC : FirstViewController, trackee : Trackee){
+        //Send alert
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = nil //Fire immediately
+        if let name = trackee.trackeeData["name"] as? NSString{
+            localNotification.alertBody = "\(name) has arrived at their destination!"
+        } else {
+            localNotification.alertBody = "Someone you're tracking has arrived at their destination!"
+        }
+        localNotification.alertAction = "View Map" //Action when swiping alert
+        localNotification.category = "devaitionAlertCategory"
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        let alertController = UIAlertController(title: "Arrived at Destination",message: localNotification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        FVC.presentViewController(alertController, animated: true, completion: nil)
+
+    }
+    
+    static func sendTrackeeCanceledAlert(FVC : FirstViewController, trackee : Trackee){
+        //Send alert
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = nil //Fire immediately
+        if let name = trackee.trackeeData["name"] as? NSString{
+            localNotification.alertBody = "\(name) has canceled their route!"
+        } else {
+            localNotification.alertBody = "Someone you're tracking has canceled their route!"
+        }
+        localNotification.alertAction = "View Map" //Action when swiping alert
+        localNotification.category = "devaitionAlertCategory"
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        let alertController = UIAlertController(title: "Canceled Route",message: localNotification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        FVC.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 }
