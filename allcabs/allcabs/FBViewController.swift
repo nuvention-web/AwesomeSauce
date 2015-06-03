@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
+//import Foundation
+//import UIKit
+/*
 class FBViewController : UIViewController, FBLoginViewDelegate {
     
     
@@ -31,10 +31,10 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
     {
         println("Start Create")
         for i in 0..<data.count {
-            let valueDict : NSDictionary = data[i] as NSDictionary
-            let userID = valueDict.objectForKey("id") as String
-            self.friendNames.append(valueDict.objectForKey("name") as String)
-            let id = valueDict.objectForKey("name") as String
+            let valueDict : NSDictionary = data[i] as! NSDictionary
+            let userID = valueDict.objectForKey("id") as! String
+            self.friendNames.append(valueDict.objectForKey("name") as! String)
+            let id = valueDict.objectForKey("name") as! String
             var url = NSURL (string : "http://graph.facebook.com/\(userID)/picture?type=large")
             let urlRequest = NSURLRequest(URL: url!)
             let session = NSURLSession.sharedSession()
@@ -64,7 +64,7 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
             var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
             var error: NSErrorPointer = nil
 //
-                    if let ImageData : NSData = NSURLConnection.sendSynchronousRequest(urlRequest, returningResponse: response, error:nil)?
+                    if let ImageData : NSData = NSURLConnection.sendSynchronousRequest(urlRequest, returningResponse: response, error:nil)
                     {
                         var image = UIImage( data : ImageData)
                         self.friendPics.append(image!)
@@ -84,9 +84,9 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
                 println("Start Fetched")
                 var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
                 friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-                    var resultdict = result as NSDictionary
+                    var resultdict = result as! NSDictionary
                     println("Result Dict: \(resultdict)")
-                    var Data : NSArray = resultdict.objectForKey("data") as NSArray
+                    var Data : NSArray = resultdict.objectForKey("data") as! NSArray
                     dispatch_async(dispatch_get_main_queue())
                         {
                             self.createFriendsInfo(Data)
@@ -131,7 +131,7 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if((segue.identifier == "toFriendList" ) && (self.friendNames.count > 0))
         {
-            var fl : friendList = segue.destinationViewController as friendList
+            var fl : friendList = segue.destinationViewController as! friendList
             println("Prepare \(self.friendNames.count) \(self.friendPics.count) ")
             fl.name1 = self.friendNames
             fl.profilepics1 = self.friendPics
@@ -140,8 +140,9 @@ class FBViewController : UIViewController, FBLoginViewDelegate {
     }
     
     
-    
+
 
 
     
 }
+*/

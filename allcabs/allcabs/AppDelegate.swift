@@ -6,25 +6,56 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    static var firstViewController : FirstViewController!
     var window: UIWindow?
-
+    static var id : String!
+    static var actionToTake : Selector!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyChePAVRnDw0dMcFKkiS-DCN5lMedWoL0s")
-        FBLoginView.self
-        FBProfilePictureView.self
+        //FBLoginView.self
+        //FBProfilePictureView.self
         return true
     }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
-    var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-    return wasHandled
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        /*var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        return wasHandled
+        */
+        println("Handling URL")
+        var action : String?
+        var urlstring = url.absoluteString!
+        var parameters = split(urlstring){$0 == "?"}[1]
+        var parameterList = split(parameters){$0 == "&"}
+        for parameter : String in parameterList{
+            if parameter.hasPrefix("action"){
+                let value = split(parameter) {$0 == "="}[1]
+                if value == "track"{
+                    action = "trackNewID:"
+                }
+            } else if parameter.hasPrefix("id"){
+                let value = split(parameter) {$0 == "="}[1]
+                AppDelegate.id = value
+            }
+        }
+        if let action = action{
+            if action == "trackNewID:"{
+                AppDelegate.actionToTake = Selector(action)
+            }
+        }
+        if let firstViewController = AppDelegate.firstViewController{
+            AppDelegate.actionToTake = nil
+            UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: nil, forEvent: nil)
+        } 
+
+        
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -43,6 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if let FVC = AppDelegate.firstViewController{
+            UpdateMapHelper.renderAllPaths(FVC)
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

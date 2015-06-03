@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/AwesomeSauce/WebApp/Resources/helm.ico">
 
-    <title>AllCabs</title>
+    <title>Helm</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/AwesomeSauce/WebApp/Resources/bootstrap.min.css" rel="stylesheet">
@@ -28,9 +28,9 @@
     <link href="/AwesomeSauce/WebApp/Resources/carousel.css" rel="stylesheet">
   </head>
 <body>
+<!--
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -40,11 +40,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">AllCabs</a>
+              <a class="navbar-brand" href="#">RideGuard</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-<!--
+              
+
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -60,56 +60,58 @@
                         <td class="navbar-collapse collapse" style="padding-top:10pt" ><input class="btn btn-sm btn-primary" type="submit" value="login" href="login"></td></form>
                     </tr>
                 </table>
-    -->            
+           
             </div>
           </div>
         </nav>
 
       </div>
     </div>
-
+-->
 
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
-      <ol class="carousel-indicators">
-      </ol>
+      <ol class="carousel-indicators"></ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+          <img src="/AwesomeSauce/WebApp/Resources/image2.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Grab A Ride !</h1>
-              <p>Connects you to nearest and cheapest rides from professional drivers. Download Allcabs for iPhone or Android to request your ride with the tap of a button, track your driver’s arrival and pay your fare seamlessly</p>
-              <table align="center">
-                <tr><td  align="right" style="padding-right: 20px;"><form method="POST" action="index.php/signup_page"><input id="textbox1" type="text" style="font-size:19pt;color:black" name="email"  placeholder="email"></td>
-                    <td><input type="submit" class="btn btn-lg btn-primary" value="Sign up today"</td></form></tr>
-                    </td>
-              </table>
+	    <img src="/AwesomeSauce/WebApp/Resources/helm2.png" style="width:120px;height:120px" class="img-circle" id="logo" align="middle">
+	      <h1> Helm </h1>
+              <p>The mobile app that keeps you safe when you are travelling</p>
+              <form class="form-inline" id="signup" method="POST" action="index.php/signup_page">
+		<div class="form-group">
+		  <input class="form-control input-lg " type="text" name="email" placeholder="Enter email">
+		</div>
+                <button type="submit" class="btn btn-primary btn-lg">Sign up today!</button>
+	      </form>      
             </div>
           </div>
         </div>
         </div>
       </div>
    
-    </div><!-- /.carousel -->
+   </div><!-- /.carousel -->
 
 
    
 
       <!-- START THE FEATURETTES -->
       <div class="container marketing">
-
+	<h2 id="feature-header" align="center">Coming soon to App Store. Check out our features!</h2>
+      
       <hr class="featurette-divider">
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Fast</h2>
-          <p class="lead">We will find you the nearest ride around you.</p>
+          <h2 class="featurette-heading">Detect Route Deviation</h2>
+          <p class="lead">Our app will show how much you deviate from the expected route and alert family and friends when the deviation is too great. Rest assured!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/fast.jpg" style="width:350px;height:250px" alt="Generic placeholder image">
+          <img class="featurette-image img-rounded" src ="/AwesomeSauce/WebApp/Resources/deviation.png" style="width:450px;height:350px" align="right" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -117,21 +119,66 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src ="/AwesomeSauce/WebApp/Resources/cheap.jpg"  style="width:350px;height:250px" alt="Generic placeholder image">
+          <img class="featurette-image img-rounded" src="/AwesomeSauce/WebApp/Resources/tracking.png" style="width:300px;height:500px" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
-          <h2 class="featurette-heading">Cheap</h2>
-          <p class="lead">you will get the cheapest and great experience with your cabs.</p>
+          <h2 class="featurette-heading">Real Time Tracking</h2>
+          <p class="lead">Our app will allow family and friends to track your position while on the move, and automatically shuts off when you reach the destination. Safe and easy. No violation of privacy.</p>
         </div>
       </div>
+
+<!--
+      <hr class="featurette-divider">
+
+
+      <div class="row featurette">
+	<div class="col-md-7">
+	  <h2 class="featurette-heading">Panic Button</h2>
+	  <p class="lead">In case of emergency, our app has a panic button which will alert your contacts and local authorities</p>
+	</div>
+	<div class="col-md-5">
+	  <img class="featurette-image img-responsive" src="#" style="width:350;height:350px" align="right" alt="Generic placeholder image">
+	</div>
+      </div>
+-->
+
+
 
       <!-- /END THE FEATURETTES -->
- <hr class="featurette-divider">
+      <hr class="featurette-divider">
+      
+      <h2 id="feature-header" align=center>The Team</h2>
+      <div class="row">
+	<div class="col-lg-2 col-lg-offset-1">
+	  <a href="https://www.linkedin.com/in/albrechtmatthew" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/matt.jpg" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Matt</h3>
+        </div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/pub/patr%C3%ADcia-gomes/18/b16/b46" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/patricia.jpg" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Patricia</h3>
+	</div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/pub/reshu-goel/a4/405/615" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/reshu.jpg" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Reshu</h3>
+	</div>
+	<div class="col-lg-2">
+	  <a href="https://www.linkedin.com/in/richardliang" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/richard.jpg" alt="Generic placeholder image" width="140" height="140"></a>
+	  <h3>Richard</h3>
+	</div>
+	<div class="col-lg-2">
+          <a href="https://www.linkedin.com/pub/shubham-kumar/92/718/71a" target="_blank"><img class="img-circle" src="/AwesomeSauce/WebApp/Resources/shubham.jpg" alt="Generic placeholder image" width="140" height="140"></a>
+          <h3>Shubham</h3>
+        </div>
+      </div>
+
+
+      <hr class="featurette-divider">
+
 
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2014 Helm. Image credit Kalyan Chakravarthy/Flickr <!-- &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
       </footer>
 
     </div><!-- /.container -->

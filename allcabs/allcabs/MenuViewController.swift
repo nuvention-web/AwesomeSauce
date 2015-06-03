@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import Foundation
-import UIKit
+//import Foundation
+//import UIKit
 class MenuViewController :UIViewController{
     var searchBar : UISearchBar!
     override func viewDidLoad() {
@@ -32,4 +32,13 @@ class MenuViewController :UIViewController{
             NSLog("No revealViewController")
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CancelRoute"{
+            if let firstViewController = segue.destinationViewController as? FirstViewController{
+                firstViewController.cancelCurrentRoute()
+            }
+        }
+    }
+    
 }

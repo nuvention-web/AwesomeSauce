@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 awesomesauce. All rights reserved.
 //
 
-import Foundation
-import UIKit
+//import Foundation
+//import UIKit
 
 
 class friendListCell :UITableViewCell
@@ -62,7 +62,7 @@ class friendList : UIViewController,UITableViewDataSource, UITableViewDelegate
     
     func tableView(FriendListTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell : friendListCell = FriendListTable.dequeueReusableCellWithIdentifier("cell") as friendListCell
+        let cell : friendListCell = FriendListTable.dequeueReusableCellWithIdentifier("cell") as! friendListCell
        cell.LoadCell(profilepics[indexPath.row], CellName: name[indexPath.row])
         if(indexPath.row % 2 == 0)
         {

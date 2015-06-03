@@ -38,6 +38,9 @@
 |
 */
 $route['signup_page'] = "welcome/signup";
+$route['trackNewRoute'] = "welcome/trackNewRoute";
+$route['updateRouteByID'] = "welcome/updateRouteByID";
+$route['getRouteByID'] = "welcome/getRouteByID";
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 

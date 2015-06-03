@@ -23,4 +23,25 @@ class mymodel extends CI_Model {
 
 	$this->db->insert('potential_emails',$data);
     }
+
+    function trackNewRoute($data)
+	{
+		$data['id'] = md5(microtime(true).getmypid());
+		$this->db->insert('location_tracker',$data);
+		
+		return $data['id'];
+	}
+
+	function updateRouteByID($data)
+	{
+		$id = $data['id'];
+		unset($data['id']);
+		$this->db->update('location_tracker',$data, array('id' => $id));
+	}
+
+	function getRouteByID($id)
+	{
+		$query = $this->db->get_where('location_tracker',array('id' => $id));
+		return $query->row_array();
+	}
 }
