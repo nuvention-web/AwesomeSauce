@@ -16,6 +16,9 @@
 		51DDC83A1AA5899300EF0678 /* Richard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 51DDC8351AA5899300EF0678 /* Richard.jpg */; };
 		B31F91A21B067A8F00CC7C24 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31F91A11B067A8F00CC7C24 /* MessageUI.framework */; };
 		B31F91A41B067AAD00CC7C24 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31F91A31B067AAD00CC7C24 /* UIKit.framework */; };
+		B39015271B178EB400D9BF14 /* DeviationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39015261B178EB400D9BF14 /* DeviationHelper.swift */; };
+		B39015291B178FCD00D9BF14 /* UpdateMapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39015281B178FCD00D9BF14 /* UpdateMapHelper.swift */; };
+		B390152B1B17932D00D9BF14 /* MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390152A1B17932D00D9BF14 /* MessageHelper.swift */; };
 		B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C193F91AED7D7A003B618B /* EasyDate.swift */; };
 		B3C193FC1AED8CE5003B618B /* bluerect.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C193FB1AED8CE5003B618B /* bluerect.png */; };
 		B3C193FE1AED8D76003B618B /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C193FD1AED8D76003B618B /* Icon-60@3x.png */; };
@@ -74,6 +77,9 @@
 		51DDC8351AA5899300EF0678 /* Richard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Richard.jpg; sourceTree = "<group>"; };
 		B31F91A11B067A8F00CC7C24 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B31F91A31B067AAD00CC7C24 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B39015261B178EB400D9BF14 /* DeviationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviationHelper.swift; sourceTree = "<group>"; };
+		B39015281B178FCD00D9BF14 /* UpdateMapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMapHelper.swift; sourceTree = "<group>"; };
+		B390152A1B17932D00D9BF14 /* MessageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHelper.swift; sourceTree = "<group>"; };
 		B3C193F91AED7D7A003B618B /* EasyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyDate.swift; sourceTree = "<group>"; };
 		B3C193FB1AED8CE5003B618B /* bluerect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluerect.png; sourceTree = "<group>"; };
 		B3C193FD1AED8D76003B618B /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "icons/Icon-60@3x.png"; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 				BFC1D2681AEB41D0002C34A4 /* ShareModel.swift */,
 				E32E3CF91A9B9E4E0096EA3D /* Main.storyboard */,
 				E32E3CF51A9B9E4E0096EA3D /* FirstViewController.swift */,
+				B39015281B178FCD00D9BF14 /* UpdateMapHelper.swift */,
+				B39015261B178EB400D9BF14 /* DeviationHelper.swift */,
 				51DDC6441AA3A2D500EF0678 /* FBViewController.swift */,
 				51DDC62B1AA15F5B00EF0678 /* friendList.swift */,
 				E3A291DA1A9FDA2200C547E5 /* MenuViewController.swift */,
@@ -238,6 +246,7 @@
 				E32E3CF11A9B9E4D0096EA3D /* Supporting Files */,
 				BFC1D26C1AEC7013002C34A4 /* Trackee.swift */,
 				B3C193F91AED7D7A003B618B /* EasyDate.swift */,
+				B390152A1B17932D00D9BF14 /* MessageHelper.swift */,
 			);
 			path = allcabs;
 			sourceTree = "<group>";
@@ -427,6 +436,8 @@
 				E3A291DB1A9FDA2200C547E5 /* MenuViewController.swift in Sources */,
 				E32E3CF41A9B9E4E0096EA3D /* AppDelegate.swift in Sources */,
 				BFC1D26D1AEC7013002C34A4 /* Trackee.swift in Sources */,
+				B390152B1B17932D00D9BF14 /* MessageHelper.swift in Sources */,
+				B39015291B178FCD00D9BF14 /* UpdateMapHelper.swift in Sources */,
 				BFC1D2691AEB41D0002C34A4 /* ShareModel.swift in Sources */,
 				E3D3782A1AA3F0E400EB8622 /* GooglePlacesAutocompleteViewController.swift in Sources */,
 				B3FAEBBA1AE6BBDB0012385E /* MenuTableViewController.swift in Sources */,
@@ -435,6 +446,7 @@
 				B3C193FA1AED7D7A003B618B /* EasyDate.swift in Sources */,
 				E32E3CF61A9B9E4E0096EA3D /* FirstViewController.swift in Sources */,
 				E347B6471A9FD3D500C115AC /* SWRevealViewController.m in Sources */,
+				B39015271B178EB400D9BF14 /* DeviationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +572,7 @@
 		E32E3D101A9B9E4E0096EA3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -581,12 +594,14 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		E32E3D111A9B9E4E0096EA3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -607,6 +622,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "allcabs-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

@@ -14,6 +14,11 @@ class ShareModel
     static let myBaseURL : String = "http://helmapp.me/index.php"
     static var uniqueuserid : String!
     
+    enum CompletionTypes{
+        case Cancelled
+        case Arrived
+    }
+    
     static func getParamStringFromViewController(firstViewController : FirstViewController) -> (String){
         let dictionary : [String:String] = getDictionaryFromViewController(firstViewController)
         return getParamStringFromDictionary(dictionary)
@@ -27,6 +32,7 @@ class ShareModel
         dictionary["starting_lat"] = firstViewController.startingCoord?.latitude.description
         dictionary["starting_long"] = firstViewController.startingCoord?.longitude.description
         dictionary["deviation_index"] = firstViewController.deviationIndex.description
+        dictionary["name"] = firstViewController.name
         return dictionary
     }
     
@@ -80,7 +86,9 @@ class ShareModel
                 ShareModel.uniqueuserid = parseJSON["id"] as? String
                 println("id: \(ShareModel.uniqueuserid)")
             }
-            completion?()
+            if let completion = completion{
+                completion()
+            }
         }
         
         task.resume()
@@ -129,7 +137,9 @@ class ShareModel
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
 //            }
-            completion?(json: myJSON)
+            if let completion = completion{
+                completion(json: myJSON)
+            }
 
     }
     task.resume()
@@ -138,15 +148,21 @@ class ShareModel
     }
 
     
-    static func updateRouteByID(id : String, sender : FirstViewController, completion : (()->())!)
+    static func updateRouteByID(id : String, sender : FirstViewController, postData : [String : String]?,completion : (()->())?)
     {
         
-        let myUrl = NSURL(string: "http://ec2-54-149-51-13.us-west-2.compute.amazonaws.com/AwesomeSauce/WebApp/index.php/updateRouteByID");
+        let myUrl = NSURL(string: "http://helmapp.me/index.php/updateRouteByID");
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
         // Compose a query string
-        let postString = "id=\(id)&\(getParamStringFromViewController(sender))"
+        var postString : String
+        if let dataDict = postData {
+            postString = "id=\(id)&\(getParamStringFromDictionary(dataDict))"
+        } else {
+            postString = "id=\(id)&\(getParamStringFromViewController(sender))"
+        }
+        
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
@@ -175,7 +191,9 @@ class ShareModel
 //                var firstNameValue = parseJSON["id"] as? String
 //                uniqueuserid = parseJSON["id"] as? String
 //                println("id: \(uniqueuserid)")
-            completion?()
+                if let completion = completion{
+                    completion()
+                }
             }
         
     
@@ -190,9 +208,114 @@ class ShareModel
             if let dict = json{
                 trackee.trackeeData = dict
             }
-            completion?()
+            if let completion = completion{
+                completion()
+            }
         }
     }
 
+    static func updateAllCompletion(FVC: FirstViewController, completion:(()->())!){
+        for trackee : Trackee in FVC.trackees{
+            if trackee.updated == false{
+                return
+            }
+        }
+        //Remove finished trackees
+        FVC.trackees = FVC.trackees.filter(){
+            trackee in
+            if let arrived = trackee.trackeeData["arrived"] as? NSString{
+                if arrived == "1" {
+                    return false
+                }
+            }
+            if let current_lat = trackee.trackeeData["current_lat"] as? NSString,
+                current_long = trackee.trackeeData["current_long"] as? NSString{
+                    if current_lat == "0" && current_long == "0"{
+                        return false
+                    }
+            }
+            return true
+        }
+        
+        for trackee : Trackee in FVC.trackees{
+            trackee.updated = false
+        }
+        if let completion = completion{
+            completion()
+        }
+    }
+    
+    static func updateAllTrackees(FVC : FirstViewController, completion:(()->())!){
+        for trackee : Trackee in FVC.trackees {
+            
+                ShareModel.updateTrackee(trackee){
+                    if let arrived = trackee.trackeeData["arrived"] as? NSString{
+                        if arrived == "1"{
+                            MessageHelper.sendTrackeeArrivedAlert(FVC, trackee: trackee)
+                        }
+                    }
+                    if let current_lat = trackee.trackeeData["current_lat"] as? NSString,
+                        current_long = trackee.trackeeData["current_long"] as? NSString{
+                            if current_lat == "0" && current_long == "0"{
+                                MessageHelper.sendTrackeeCanceledAlert(FVC,trackee: trackee)
+                            }
+                    }
+                    if let deviation_index_string = trackee.trackeeData["deviation_index"] as? NSString,
+                        deviation_index = deviation_index_string.doubleValue as? Double{
+                            if deviation_index > 1{
+                                MessageHelper.sendTrackeeDeviatedAlert(FVC, trackee: trackee)
+                            }
+                    }
+                    if trackee.path == nil{
+                        if let starting_long = trackee.trackeeData["starting_long"] as? NSString,
+                            starting_lat = trackee.trackeeData["starting_lat"] as? NSString,
+                            ending_address = trackee.trackeeData["ending_address"] as? NSString {
+                                FVC.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: starting_lat.doubleValue, longitude: starting_long.doubleValue), to: ending_address as! String) {
+                                    optionalRoute in
+                                    if let encodedRoute = optionalRoute {
+                                        // 3
+                                        let path = GMSPath(fromEncodedPath: encodedRoute)
+                                        trackee.path = path
+                                    }
+                                
+                                } //fetchDirections
+                        } //if !nil
+                    }
+                    trackee.updated = true
+                    ShareModel.updateAllCompletion(FVC,completion: completion)
+                } //updateTrackee
+        }
+        
+    }
+
+    static func finishTrackingRoute(FVC : FirstViewController, completionType : CompletionTypes){
+        var postData : [String:String] = [String:String]()
+        if completionType == .Cancelled{
+            
+            //sendAllertThatCancelled
+        } else if completionType == .Arrived{
+            postData["arrived"] = "1"
+            
+            postData["arrived_at"] = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        }
+        
+
+        postData["starting_lat"] = "NULL"
+        postData["starting_long"] = "NULL"
+        postData["ending_address"] = "NULL"
+        postData["current_lat"] = "NULL"
+        postData["current_long"] = "NULL"
+        postData["deviation_index"] = "NULL"
+        if let id = uniqueuserid{
+            ShareModel.updateRouteByID(id, sender: FVC, postData: postData, completion: nil)
+            uniqueuserid = nil
+        }
+        FVC.path = nil
+        //sendAlert
+        FVC.deviationIndex = 0.0
+        FVC.mapView.clear()
+        FVC.deviatedFromPath = false
+
+    }
 }
     

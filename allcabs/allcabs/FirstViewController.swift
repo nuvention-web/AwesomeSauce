@@ -31,6 +31,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
     let demo : Bool = true
     var deviationIndex : Double
     var path : GMSPath!
+    var name : String = ""
     
     required init(coder aDecoder: NSCoder) {
         //sydneyCoord = CLLocationCoordinate2D(latitude: -33.86,longitude: 151.20)
@@ -60,55 +61,25 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         
         self.view = mapView
         
-
+        var defaults = NSUserDefaults.standardUserDefaults()
+        let userName = defaults.stringForKey("name")
+        if let userName = userName{
+            self.name = userName
+        } else {
+            MessageHelper.getUserName(self)
+        }
+        
+        //This should be last
+        if let action = AppDelegate.actionToTake{
+            AppDelegate.actionToTake = nil
+            UIApplication.sharedApplication().sendAction(action, to: self, from: nil, forEvent: nil)
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    func calculateDeviationIndex()->() {
-        var path = self.path
-        if path == nil{
-            return
-        }
-        let length = path.lengthOfKind(kGMSLengthGeodesic) * 0.000621371; // in miles
-        var minDistance : Double = 9999999;
-        var distance = 0.01
-        if path.count() > 1{
 
-            while (!GMSGeometryIsLocationOnPathTolerance(self.currentCoord, path, true, distance/0.000621371)){
-                distance *= 1.5
-            }
-            distance /= 1.5
-        }
-        deviationIndex = (length > 1) ? distance / pow(length,0.65) : distance / length
-        if (deviationIndex > 1 && !deviatedFromPath){
-            deviatedFromPath = true
-            sendDeviatedAlert()
-        }
-    }
-    
-    func sendDeviatedAlert(){
-        
-        //Send alert
-        var localNotification = UILocalNotification()
-        localNotification.fireDate = nil //Fire immediately
-        localNotification.alertBody = "You have significantly deviated from your expected path!"
-        localNotification.alertAction = "View Map" //Action when swiping alert
-        localNotification.category = "devaitionAlertCategory"
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        
-        let alertController = UIAlertController(title: "Deviated From Path",message: "You have significantly deviated from your expected path!", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
-    
     func cancelCurrentRoute(){
-        deviationIndex = 0.0
-        path = nil
-        self.mapView.clear()
-        self.deviatedFromPath = false
+        ShareModel.finishTrackingRoute(self, completionType: .Cancelled)
     }
     
     func setupNotificationSettings(){
@@ -144,40 +115,6 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         let categoriesForSettings = NSSet(objects: deviationAlertCategory)
         let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as Set<NSObject>)
         UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
-        
-    }
-    
-    func updateMyMarker(){
-        if(myMarker == nil){
-            myMarker = GMSMarker()
-            
-            //myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: 1, green: 0.4, blue: 0, alpha: 1))
-            myMarker.title = "Matthew"
-            myMarker.appearAnimation = kGMSMarkerAnimationNone
-            
-        }
-        
-        var red = CGFloat(min(deviationIndex, 1))
-        var green = CGFloat(max(1-deviationIndex,0))
-        
-        myMarker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
-        myMarker.position = self.currentCoord
-        myMarker.map = self.mapView
-    }
-    func updateMarker(marker : GMSMarker, position : CLLocationCoordinate2D, deviationIndex : Double!)->(){
-        var red : CGFloat
-        var green : CGFloat
-        if let index = deviationIndex{
-            red = CGFloat(min(index, 1))
-            green = CGFloat(max(1-index,0))
-        } else {
-            red = CGFloat(0)
-            green = CGFloat(1)
-        }
-        
-        marker.icon = GMSMarker.markerImageWithColor(UIColor(red: red, green: green, blue: CGFloat(0.0), alpha: CGFloat(1.0)))
-        marker.position = position
-        marker.map = self.mapView
         
     }
     
@@ -245,18 +182,24 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
             
         }
         self.currentCoord = coord
-        calculateDeviationIndex()
+        if DeviationHelper.reachedDestination(self) {
+            ShareModel.finishTrackingRoute(self, completionType: .Arrived)
+            UpdateMapHelper.updateMyMarker(self)
+            return
+        }
+        
+        DeviationHelper.calculateDeviationIndex(self)
         
         if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 10{
             staticHolder.lastTimeUpdated = NSDate()
-            updateAllTrackees(){}
+            ShareModel.updateAllTrackees(self, completion:nil)
             if((ShareModel.uniqueuserid) != nil){
-                ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self, completion: nil)
+                ShareModel.updateRouteByID(ShareModel.uniqueuserid, sender: self,postData: nil, completion: nil)
             }
         }else if NSDate().secondsFrom(staticHolder.lastTimeUpdated) >= 5{
-            self.renderAllPaths()
+            UpdateMapHelper.renderAllPaths(self)
         }else {
-            updateMyMarker()
+            UpdateMapHelper.updateMyMarker(self)
         }
     }
     
@@ -324,7 +267,7 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
                 let path = GMSPath(fromEncodedPath: encodedRoute)
                 self.path = path
                 let line = GMSPolyline(path: path)
-                self.calculateDeviationIndex();
+                DeviationHelper.calculateDeviationIndex(self);
                 // 4
                 line.strokeWidth = 4.0
                 line.tappable = true
@@ -395,21 +338,6 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
 
     }
     
-    func sendMessage(sender: AnyObject, trackingID : String) {
-        var messageViewController = MFMessageComposeViewController()
-        messageViewController.body = "I would like to share my location with you! The following link will allow you to track me until I reach my destination. Helm://?action=track&id=\(trackingID)"
-        
-        messageViewController.recipients = []
-        messageViewController.messageComposeDelegate = self
-        if(!MFMessageComposeViewController.canSendText()){
-            let alertController = UIAlertController(title: "Unable To Text",message: "You are unable to text from your device.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
-            println("messageViewController can't send text")
-        } else {
-            self.presentViewController(messageViewController, animated: false, completion: nil)
-        }
-    }
     
     func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
         switch (result.value) {
@@ -432,20 +360,20 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         if id == nil{
             ShareModel.startNewRoute(self){
                 id = ShareModel.uniqueuserid
-                self.sendMessage(self, trackingID: id)
+                MessageHelper.sendMessage(self, trackingID: id, FVC: self)
             }
         }
         else {
-            sendMessage(self, trackingID: id)
+            MessageHelper.sendMessage(self, trackingID: id, FVC: self)
         }
 
     }
     
-    var trackees : [Trackee] = []
+    var trackees : [Trackee] = [Trackee]()
     
     
     @IBAction func trackNewID(sender : AppDelegate){
-        var id = sender.id
+        var id = AppDelegate.id
         if !arrayContainsTrackee(id){
             var trackee : Trackee = Trackee(id : id)
             trackees.append(trackee)
@@ -461,49 +389,6 @@ class FirstViewController: MenuViewController, CLLocationManagerDelegate, UISear
         return false
     }
     
-    func renderAllPaths(){
-        self.mapView.clear()
-        for trackee : Trackee in trackees {
-            let line = GMSPolyline(path: trackee.path)
-            line.strokeWidth = 4.0
-            line.tappable = true
-            line.map = self.mapView
-            
-            let marker = GMSMarker()
-            updateMarker(marker, position: CLLocationCoordinate2D(latitude: (trackee.trackeeData["current_lat"] as! NSString).doubleValue,longitude: (trackee.trackeeData["current_long"] as! NSString).doubleValue), deviationIndex: (trackee.trackeeData["deviation_index"] as? NSString)?.doubleValue)
-        }
-        
-        updateMyMarker()
-        let line = GMSPolyline(path: self.path)
-        // 4
-        line.strokeWidth = 4.0
-        line.tappable = true
-        line.map = self.mapView
-    }
-    
-    func updateAllTrackees(completion:(()->())!){
-        for trackee : Trackee in trackees {
-            if trackee.path == nil{
-                ShareModel.updateTrackee(trackee){
-                    if(trackee.trackeeData["starting_long"] != nil && trackee.trackeeData["starting_lat"] != nil && trackee.trackeeData["ending_address"] != nil){
-                        self.fetchDirectionsFrom(CLLocationCoordinate2D(latitude: (trackee.trackeeData["starting_lat"] as! NSString).doubleValue, longitude: (trackee.trackeeData["starting_long"] as! NSString).doubleValue), to: trackee.trackeeData["ending_address"] as! String) {
-                                optionalRoute in
-                                if let encodedRoute = optionalRoute {
-                                    // 3
-                                    let path = GMSPath(fromEncodedPath: encodedRoute)
-                                    trackee.path = path
-                                }
-                            
-                        } //fetchDirections
-                    
-                    } //if !nil
-                    completion?()
-                } //updateTrackee
-            } else {
-                ShareModel.updateTrackee(trackee, completion: completion)
-            }
-        }
-    }
 }
 
 

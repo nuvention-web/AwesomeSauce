@@ -13,7 +13,8 @@
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static var firstViewController : FirstViewController!
     var window: UIWindow?
-    var id : String!
+    static var id : String!
+    static var actionToTake : Selector!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -40,11 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else if parameter.hasPrefix("id"){
                 let value = split(parameter) {$0 == "="}[1]
-                self.id = value
+                AppDelegate.id = value
             }
         }
-            
-        UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: self, forEvent: nil)
+        if let action = action{
+            if action == "trackNewID:"{
+                AppDelegate.actionToTake = Selector(action)
+            }
+        }
+        if let firstViewController = AppDelegate.firstViewController{
+            AppDelegate.actionToTake = nil
+            UIApplication.sharedApplication().sendAction(Selector(action!), to: AppDelegate.firstViewController!, from: nil, forEvent: nil)
+        } 
+
         
         return true
     }
@@ -65,6 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if let FVC = AppDelegate.firstViewController{
+            UpdateMapHelper.renderAllPaths(FVC)
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

@@ -1,0 +1,18 @@
+Younger and younger kids are getting smartphones these days, with roughly 5-10 million 8-12 year olds having them in the US. Getting a smartphone at that age also comes with a lot of newfound responsibility and independence, and every parent wants their kid to be independent, but not THAT independent THAT quickly. Helm is an application that helps parents bridge that gap, and lets parents ease their kids into independence while still making sure they're safe and accountable.
+
+Target: 8-12 year olds and their parents, use when they're "going over to Johnny's house after school", when they want to go out alone, commuting to school by public transportation.
+Value Prop: Briding the leap in responsibility when kids get their first smartphone. 
+Features: Route deviation (notify if they get too far off path), notifications when they reach destination, Can I Go* feature to request an activity from parents, and Parental Dashboard* to let parents have more control and oversight of their children.
+*Not yet implemented
+
+The website is PHP using CodeIgniter
+
+The app is iOS (swift) which interacts with the website and MySQL database. Database managed through phpmyadmin (helmapp.me/phpmyadmin db_user/AllCabsPassword)
+
+helmapp.me
+
+Logo:
+/allcabs/Images/icons/helm_icon_1024.png
+
+Matthew Albrecht, Richard Liang, Patricia Gomes, Shubham Kumar, Reshu Goel
+
