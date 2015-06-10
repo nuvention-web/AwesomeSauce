@@ -38,7 +38,7 @@ class DeviationHelper {
             }
             distance /= 1.3
         }
-        FVC.deviationIndex = (length > 1) ? distance / pow(length,0.55) : distance / length
+        FVC.deviationIndex = (length > 1) ? distance / pow(length,0.55) : distance*2 / length
         if (FVC.deviationIndex > 1 && !FVC.deviatedFromPath){
             FVC.deviatedFromPath = true
             DeviationHelper.sendDeviatedAlert(FVC)
